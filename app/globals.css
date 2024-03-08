@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply h-screen dark:bg-[#21262D] overflow-y-auto overflow-x-hidden
+   
+  bg-white text-black dark:text-white;
+}
