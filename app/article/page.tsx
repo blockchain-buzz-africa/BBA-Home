@@ -135,7 +135,7 @@ const page = (props: Props) => {
 
       </div>
 
-      <RecentArticles />
+      {/* <RecentArticles news={news} /> */}
 
       <Footer />
     </div>
