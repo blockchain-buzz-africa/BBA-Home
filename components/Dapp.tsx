@@ -19,7 +19,7 @@ const Dapp = (props: Props) => {
                     ad
                         </div>
                     </div>
-                    <div className="text-xs font-semibold leading-4 text-neutral-950">
+                    <div className="text-xs font-regular leading-4 text-neutral-750">
                     Your gateway to dollar-pegged savings. Deposit. Earn interest and save towards your goals.
                     </div>
                     <div className="flex gap-1.5 mt-1.5 text-xs leading-4 whitespace-nowrap text-neutral-950">
