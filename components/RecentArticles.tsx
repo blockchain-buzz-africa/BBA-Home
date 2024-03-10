@@ -28,7 +28,7 @@ const RecentArticles: React.FC<Props> = ({ news }) => {
   }
 
   return (
-    <div className="p-5 flex flex-col gap-3">
+    <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
       <span className="text-xl text-[#AA0099] uppercase">Recent Articles</span>
 
       {news && news.map((item: Article) => (

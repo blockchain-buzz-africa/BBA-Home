@@ -5,7 +5,7 @@ type Props = {}
 
 const PodcastSpaces = (props: Props) => {
   return (
-    <div className="p-5 flex flex-col gap-3">
+    <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
       <span className="text-xl text-[#AA0099] uppercase">Podcasts: SPACES</span>
 
       <div className="mt-3 w-full h-[48px] bg-[#21262D] dark:bg-[#363b43] flex flex-row">

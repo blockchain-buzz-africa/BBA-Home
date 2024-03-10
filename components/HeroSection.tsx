@@ -6,7 +6,7 @@ type Props = {}
 
 const HeroSection = (props: Props) => {
   return (
-    <Link href={'/article'} className="p-5 flex flex-col gap-3">
+    <Link href={'/article'} className="p-5 md:hidden lg:hidden flex flex-col gap-3">
         <div className="w-full h-[280px]">
           <Image src={Homee} alt="home" className="w-full h-full" />
         </div>

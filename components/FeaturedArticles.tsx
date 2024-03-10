@@ -5,7 +5,7 @@ type Props = {};
 
 const FeaturedArticles = (props: Props) => {
   return (
-    <div className=" flex flex-col gap-3">
+    <div className="md:hidden lg:hidden flex flex-col gap-3">
       <span className="p-5 text-xl text-[#AA0099] uppercase">
         Featured Articles
       </span>

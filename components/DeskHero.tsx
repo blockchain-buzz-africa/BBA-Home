@@ -1,0 +1,403 @@
+import Image from "next/image";
+import React from "react";
+import AdImage from "./../public/adImage.jpeg";
+import Homee from "./../public/home.png";
+import FeaturedImage from "./../public/featuredImg.jpeg";
+import Blue from "./../public/blue.jpeg";
+import Link from "next/link";
+
+type Props = {};
+
+const DeskHero = (props: Props) => {
+  return (
+    <>
+      <div className="w-full hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 ">
+        <div className=" w-[20%] flex flex-col gap-1">
+          <span className=" text-xs">Ad</span>
+          <Image src={AdImage} alt="image" className=" w-[290px] h-[170px]" />
+          <span className=" text-xl mt-2">
+            Will the bull run spur jobs in the web3 market?
+          </span>
+          <p className="text-sm text-[#6A6A6A] ">
+            Chainlink is a clear leader in the oracle market and adjoining
+            verticals, but apart from its price data solutions, demand has been
+            lackluster. To overcome this, the project is making changes to its
+            operational model, together with betting on material adoption by
+            financial institutions.
+          </p>
+          <p className="text-xs text-[#6A6A6A] ">
+            by <span className="text-[#AA0099]">web3 recruiter</span>/ 5 DAYS
+            AGO
+          </p>
+        </div>
+        <div className="w-[46%] flex flex-col gap-1">
+          <span className=" text-xs">Featured</span>
+          <Image
+            src={FeaturedImage}
+            alt="image"
+            className=" w-[686px] h-[386px]"
+          />
+          <span className=" text-xl mt-2">
+            Women-led communities pushing the bitcoin agenda in Africa.{" "}
+          </span>
+          <p className="text-sm text-[#6A6A6A]">
+            In billing records filed back in September, the Philadelphia FBI
+            sent over a Grand Jury subpoena looking to “investigate activity
+            related to specific individuals” In billing records filed back in
+            September, the Philadelphia FBI sent over a Grand Jury subpoena
+            looking to “investigate activity related to specific individuals” In
+            billing records filed back in September, the Philadelphia FBI sent
+            over a Grand Jury subpoena looking to “investigate activity related
+            to specific individuals”
+          </p>
+          <p className="text-[#AA0099] text-xs mt-2">Read more</p>
+
+          <div className="text-xs flex-row gap-4 text-[#6A6A6A]">
+            <span className="uppercase">
+              {" "}
+              <strong>By</strong> MICHAEL LOUPA
+            </span>
+            <span>
+              <strong> November 3, 2023</strong>
+            </span>
+          </div>
+        </div>
+        <div className="w-[30%] py-3 overflow-hidden flex flex-col gap-3">
+          <span className="text-xl text-[#AA0099] uppercase">
+            Recent Articles
+          </span>
+
+          <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+              <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
+            </div>
+
+            <div className="w-[70%] h-[70px] flex flex-col gap-1">
+              <div className="flex flex-row justify-start gap-4 text-xs">
+                <span className="text-[#AA0099] font-semibold uppercase">
+                  News
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  By Defi Dave
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  June 21 2023
+                </span>
+              </div>
+              <div className="text-sm ">
+                <p>
+                  A CBDC is &#39;Not a Compelling Priority in the Short to
+                  Medium Term,&#39; Says the Central Bank of Kenya
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+          <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+              <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
+            </div>
+
+            <div className="w-[70%] h-[70px] flex flex-col gap-1">
+              <div className="flex flex-row justify-start gap-4 text-xs">
+                <span className="text-[#AA0099] font-semibold uppercase">
+                  News
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  By Defi Dave
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  June 21 2023
+                </span>
+              </div>
+              <div className="text-sm ">
+                <p>
+                  A CBDC is &#39;Not a Compelling Priority in the Short to
+                  Medium Term,&#39; Says the Central Bank of Kenya
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+          <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+              <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
+            </div>
+
+            <div className="w-[70%] h-[70px] flex flex-col gap-1">
+              <div className="flex flex-row justify-start gap-4 text-xs">
+                <span className="text-[#AA0099] font-semibold uppercase">
+                  News
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  By Defi Dave
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  June 21 2023
+                </span>
+              </div>
+              <div className="text-sm ">
+                <p>
+                  A CBDC is &#39;Not a Compelling Priority in the Short to
+                  Medium Term,&#39; Says the Central Bank of Kenya
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+          <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+              <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
+            </div>
+
+            <div className="w-[70%] h-[70px] flex flex-col gap-1">
+              <div className="flex flex-row justify-start gap-4 text-xs">
+                <span className="text-[#AA0099] font-semibold uppercase">
+                  News
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  By Defi Dave
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  June 21 2023
+                </span>
+              </div>
+              <div className="text-sm ">
+                <p>
+                  A CBDC is &#39;Not a Compelling Priority in the Short to
+                  Medium Term,&#39; Says the Central Bank of Kenya
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+          <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+              <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
+            </div>
+
+            <div className="w-[70%] h-[70px] flex flex-col gap-1">
+              <div className="flex flex-row justify-start gap-4 text-xs">
+                <span className="text-[#AA0099] font-semibold uppercase">
+                  News
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  By Defi Dave
+                </span>
+                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                  June 21 2023
+                </span>
+              </div>
+              <div className="text-sm ">
+                <p>
+                  A CBDC is &#39;Not a Compelling Priority in the Short to
+                  Medium Term,&#39; Says the Central Bank of Kenya
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+        </div>
+      </div>
+      <div className="w-[70%] p-5 mx-auto px-4">
+        <span className="font-semibold text-xl">News & Articles</span>
+        <p className="text-xs mt-4">
+          Watch podcasts, conversations, tutorials and special features.
+        </p>
+        <div className="mt-6 h-[80%]  w-full grid grid-cols-3  gap-6">
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="w-[70%] p-5 mx-auto px-4">
+        <span className="font-semibold text-xl">Videos</span>
+        <p className="text-xs mt-4">
+          Watch podcasts, conversations, tutorials and special features.
+        </p>
+        <div className="mt-6 h-[80%]  w-full grid grid-cols-3  gap-6">
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={"/article"}>
+            <div className="w-full h-[280px]">
+              <Image src={Homee} alt="home" className="w-[344px] h-[269px]" />
+            </div>
+
+            <div className="mt-2">
+              <span className="text-xl">
+                Africa gearing up for the second edition of the AMAS 2023
+              </span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>Sep 29 2023</p>
+                <p>Author : Michael Loupa</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DeskHero;

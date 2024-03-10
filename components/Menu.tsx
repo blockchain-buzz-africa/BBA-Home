@@ -36,6 +36,7 @@ const Menu = (props: Props) => {
         aria-expanded={open}
         aria-label="Open menu"
         onClick={() => setOpen(!open)}
+        className="lg:hidden"
       >
         <Image src={Menuu} alt="menu" />
       </button>

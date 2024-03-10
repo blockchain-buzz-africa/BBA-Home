@@ -10,6 +10,7 @@ import FeaturedArticles from "@/components/FeaturedArticles";
 import PodcastVideos from "@/components/PodcastVideos";
 import PodcastSpaces from "@/components/PodcastSpaces";
 import Footer from "@/components/Footer";
+import DeskHero from '@/components/DeskHero';
 
 interface Article {
   id: string;
@@ -54,7 +55,7 @@ const Home: React.FC = () => {
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
       <MarketRow />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-
+      <DeskHero />
       <HeroSection />
       <RecentArticles news={news} />
       <FeaturedArticles />

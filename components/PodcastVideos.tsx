@@ -6,7 +6,7 @@ type Props = {};
 
 const PodcastVideos = (props: Props) => {
   return (
-    <div className="p-5 flex flex-col gap-3">
+    <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
       <span className="text-xl text-[#AA0099] uppercase">Podcasts: VIDEOS</span>
 
            <div className="w-full h-[280px] mt-3 relative">
