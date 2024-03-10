@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import DarkSwitch from "./../public/darkSwitch.svg";
 import LightSwitch from "./../public/lightSwitch.svg";
 import ClearNight from "./../public/clearNight.svg";
+import Link from "next/link";
 
 type Props = {};
 
@@ -106,9 +107,10 @@ const Menu = (props: Props) => {
               <span>About BBA</span>
             </div>
             <div className="flex flex-row gap-8 justify-center items-center">
-              <Image src={Telegram} alt="telegram" />
-              <Image src={Whatsapp} alt="whatsapp" />
-              <Image src={Xtwitter} alt="twitter" />
+              <Link href="https://t.me/+P6X0i80H-N0xNTdk" ><Image src={Telegram} alt="telegram" /> </Link>
+              <Link href="https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u" ><Image src={Whatsapp} alt="telegram" /> </Link>
+              <Link href="https://twitter.com/bba_Africa" ><Image src={Xtwitter} alt="telegram" /> </Link>
+              
             </div>
 
             <div className="w-full h-12 rounded-xl flex justify-between items-center dark:bg-[#313843] bg-[#E5E7EB] p-3">
