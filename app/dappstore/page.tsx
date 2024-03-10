@@ -3,6 +3,10 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import MarketRow from "@/components/MarketRow";
+import FeaturedDapp from "@/components/FeaturedDapp";
+import Image from "next/image";
+import Filter from "./../../public/filter.svg"
+import Dapp from "@/components/Dapp";
 
 
 type Props = {};
@@ -15,6 +19,23 @@ const page = (props: Props) => {
             <Header />
             <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
             <MarketRow />
+            <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+
+            {/* Dapp Hero Section */}
+
+            <FeaturedDapp />
+            {/* Title */}
+
+            <div className="p-5 flex justify-between items-center">
+                <span className=" font-extrabold text-fuchsia-700 uppercase"> DAPP STORE</span>
+                <Image src={Filter} alt="filter dapps" />
+
+            </div>
+
+            {/* DAPP LIST */}
+
+            <Dapp />
+                    
             
             {/* Submit Your Dapp */}
 
