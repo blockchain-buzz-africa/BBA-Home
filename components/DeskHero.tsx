@@ -11,7 +11,7 @@ type Props = {};
 const DeskHero = (props: Props) => {
   return (
     <>
-      <div className="w-full hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 ">
+      <div className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 ">
         <div className=" w-[20%] hidden lg:flex flex-col gap-1">
           <span className=" text-xs">Ad</span>
           <Image src={AdImage} alt="image" className=" w-[290px] h-[170px]" />
@@ -30,7 +30,7 @@ const DeskHero = (props: Props) => {
             AGO
           </p>
         </div>
-        <div className="lg:w-[46%] md:w-[58%] flex flex-col gap-1">
+        <div className="lg:w-[44%] md:w-[58%] flex flex-col gap-1">
           <span className=" text-xs">Featured</span>
           <Image
             src={FeaturedImage}
@@ -62,13 +62,13 @@ const DeskHero = (props: Props) => {
             </span>
           </div>
         </div>
-        <div className="lg:w-[30%] md:w-[42%] py-3 overflow-hidden flex flex-col gap-3">
+        <div className="lg:w-[34%] md:w-[42%] py-3 overflow-hidden flex flex-col gap-3">
           <span className="text-xl text-[#AA0099] uppercase">
             Recent Articles
           </span>
 
-          <div className="w-full h-[84px] flex flex-row">
-            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+           <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
 
@@ -77,10 +77,10 @@ const DeskHero = (props: Props) => {
                 <span className="text-[#AA0099] font-semibold uppercase">
                   News
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   By Defi Dave
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   June 21 2023
                 </span>
               </div>
@@ -94,7 +94,7 @@ const DeskHero = (props: Props) => {
           </div>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
         <div className="w-full h-[84px] flex flex-row">
-            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+            <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
 
@@ -103,10 +103,10 @@ const DeskHero = (props: Props) => {
                 <span className="text-[#AA0099] font-semibold uppercase">
                   News
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   By Defi Dave
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   June 21 2023
                 </span>
               </div>
@@ -119,8 +119,8 @@ const DeskHero = (props: Props) => {
             </div>
           </div>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-        <div className="w-full h-[84px] flex flex-row">
-            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+         <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
 
@@ -129,10 +129,10 @@ const DeskHero = (props: Props) => {
                 <span className="text-[#AA0099] font-semibold uppercase">
                   News
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   By Defi Dave
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   June 21 2023
                 </span>
               </div>
@@ -145,8 +145,8 @@ const DeskHero = (props: Props) => {
             </div>
           </div>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-        <div className="w-full h-[84px] flex flex-row">
-            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+         <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
 
@@ -155,10 +155,10 @@ const DeskHero = (props: Props) => {
                 <span className="text-[#AA0099] font-semibold uppercase">
                   News
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   By Defi Dave
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   June 21 2023
                 </span>
               </div>
@@ -171,8 +171,8 @@ const DeskHero = (props: Props) => {
             </div>
           </div>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-        <div className="w-full h-[84px] flex flex-row">
-            <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
+         <div className="w-full h-[84px] flex flex-row">
+            <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
 
@@ -181,10 +181,10 @@ const DeskHero = (props: Props) => {
                 <span className="text-[#AA0099] font-semibold uppercase">
                   News
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   By Defi Dave
                 </span>
-                <span className="dark:text-[#A5A5A5] text-[#424242]">
+                <span className="dark:text-[#A5A5A5]  text-[#424242]">
                   June 21 2023
                 </span>
               </div>

@@ -28,7 +28,7 @@ const Footer = (props: Props) => {
             </button>
           </div>
         </div>
-        <div className="w-full h-[1px] bg-white"></div>
+        <div className="w-full h-[1px] bg-transparent"></div>
 
         <div className="w-full h-[249px] text-white flex flex-row p-10 bg-gradient-to-r from-[#AA0099] to-[#163159] ">
           <div className="w-1/2 h-full flex flex-col gap-4">
