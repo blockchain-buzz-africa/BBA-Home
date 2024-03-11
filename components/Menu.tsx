@@ -43,14 +43,14 @@ const Menu = (props: Props) => {
       <div
         onClick={() => setOpen(false)}
         className={clsx(
-          "w-full bg-black bg-opacity-50 fixed bottom-0 left-0 right-0 top-0 z-40",
+          "w-full bg-black lg:hidden bg-opacity-50 fixed bottom-0 left-0 right-0 top-0 z-40",
           open ? "translate-x-[0]" : "-translate-x-[100%]"
         )}
       ></div>
       <div
         onClick={() => setOpen(true)}
         className={clsx(
-          "fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] overflow-hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
+          "fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] overflow-hidden lg:hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
           open ? "translate-x-[0]" : "-translate-x-[100%]"
         )}
       >

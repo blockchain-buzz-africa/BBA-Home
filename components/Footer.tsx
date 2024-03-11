@@ -9,7 +9,7 @@ const Footer = (props: Props) => {
   return (
     <>
       {/*mobile*/}
-      <div className="w-full md:hidden flex flex-col h-[479px]">
+      <div className="w-full lg:hidden flex flex-col h-[479px]">
         <div className="w-full flex text-white flex-col gap-4 h-[229px] p-10 bg-gradient-to-tr from-[#AA0099] to-[#163159]">
           <span className="uppercase text-xs font-light">Publisher</span>
           <span className="text-xl">BBA Publisher</span>
@@ -49,7 +49,7 @@ const Footer = (props: Props) => {
       </div>
 
       {/*Desktop*/}
-      <div className="w-full hidden  md:flex flex-col h-[479px]">
+      <div className="w-full hidden  lg:flex flex-col h-[479px]">
         <div className="w-full flex text-white flex-col gap-4 h-[229px] p-10 bg-gradient-to-tr from-[#AA0099] to-[#163159]">
           <span className="uppercase text-xs font-light">Publisher</span>
           <span className="text-xl">BBA Publisher</span>
@@ -69,8 +69,8 @@ const Footer = (props: Props) => {
             </button>
           </div>
         </div>
-        <div className="w-full h-[1px] bg-white"></div>
-        <div className="w-full h-[249px] text-white p-10 bg-gradient-to-r from-[#AA0099] to-[#163159] ">
+        <div className="w-full h-[1px] bg-transparent"></div>
+        <div className="w-full h-[249px] text-white p-5 bg-gradient-to-r from-[#AA0099] to-[#163159] ">
          <div className="flex flex-row justify-between items-center">
          <div className="w-[40%] flex flex-row">
             <div className="w-1/2 h-full flex flex-col gap-4">
@@ -91,7 +91,7 @@ const Footer = (props: Props) => {
           
           </div>
 
-          <div className="w-[40%] text-xs flex flex-col gap-4">
+          <div className="w-[40%] text-xs hidden lg:flex flex-col gap-4">
               <span className="font-semibold">About</span>
               <p>
                 Blockchain Buzz Africa is a media company working towards
