@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import FancyTwitter from "./../public/fancyTwitter.svg"
-import FancyTelegram from "./../public/fancyTwitter.svg"
+import FancyTelegram from "./../public/fancyTelegram.svg"
 
 type Props = {};
 

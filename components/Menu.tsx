@@ -43,14 +43,15 @@ const Menu = (props: Props) => {
       <div
         onClick={() => setOpen(false)}
         className={clsx(
-          "w-full bg-black lg:hidden bg-opacity-50 fixed bottom-0 left-0 right-0 top-0 z-40",
+          "w-full h-screen bg-black lg:hidden bg-opacity-50 fixed bottom-0 left-0 right-0 top-0 z-40",
           open ? "translate-x-[0]" : "-translate-x-[100%]"
         )}
       ></div>
       <div
         onClick={() => setOpen(true)}
         className={clsx(
-          "fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] overflow-hidden lg:hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
+
+          "h-screen fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] overflow-hidden lg:hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
           open ? "translate-x-[0]" : "-translate-x-[100%]"
         )}
       >
@@ -60,10 +61,10 @@ const Menu = (props: Props) => {
             <span>Blockchain Buzz Africa</span>
           </div>
 
-          <div className="py-4 flex flex-col gap-6">
+          <div className="py-4 flex flex-col gap-4">
             <span>Menu</span>
 
-            <div className="px-2 flex flex-col gap-6">
+            <div className="px-2 flex flex-col gap-5">
               <div className="flex flex-row gap-4">
                 <Image src={HomeIcon} alt="homeIcon" />
                 <span>Home</span>
@@ -99,9 +100,9 @@ const Menu = (props: Props) => {
             </div>
           </div>
 
-          <div className="mt-6 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+          <div className="mt-3 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
 
-          <div className="flex flex-col gap-12 w-full py-12 ">
+          <div className="flex flex-col gap-4 w-full py-4 ">
             <div className="flex flex-row gap-4 justify-center items-center">
               <Image src={Clue} alt="clue" />
               <span>About BBA</span>
