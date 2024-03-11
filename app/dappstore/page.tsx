@@ -34,7 +34,7 @@ const page = (props: Props) => {
 
             {/* DAPP LIST */}
 
-            <Dapp />
+            <Dapp  />
                     
             
             {/* Submit Your Dapp */}
