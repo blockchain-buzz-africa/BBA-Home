@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Tienne } from "next/font/google"; // Import Tienne
 import "./globals.css";
 import ThemeProvide from "@/context/ThemeProvider";
+import ScrollUp from "@/components/ScrollUp";
 
 
 const tienne = Tienne({
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProvide>
         <body className={tienne.className}>{children}</body>
+        <ScrollUp />
       </ThemeProvide>
     </html>
   );

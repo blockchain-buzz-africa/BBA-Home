@@ -39,7 +39,7 @@ const Banner: React.FC<Props> = (props) => {
   }, [timeLeft]);
 
   return (
-    <div className="w-full flex justify-center items-center h-[36px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
+    <div className="w-full flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white">
         Bitcoin Halving April 19: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
       </p>
