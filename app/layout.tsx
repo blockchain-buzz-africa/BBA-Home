@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Tienne } from "next/font/google"; // Import Tienne
 import "./globals.css";
 import ThemeProvide from "@/context/ThemeProvider";
 
-
-const inter = Inter({ subsets: ["latin"] });
+const tienne = Tienne({ weight: ["400", "700"], subsets: ["latin"] }); // Add Tienne with specified weights
 
 export const metadata: Metadata = {
   title: "BBA App",
@@ -19,8 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvide>
-       
-        <body className={inter.className}>{children}</body>
+        <body className={tienne.className}>{children}</body>
       </ThemeProvide>
     </html>
   );
