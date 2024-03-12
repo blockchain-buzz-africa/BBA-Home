@@ -1,15 +1,26 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 import FBImage from "./../public/fbImage.png";
 import Blue from "./../public/blue.jpeg";
 import React from "react";
+import Link from "next/link";
 
 type Props = {};
 
 const DeskArticle = (props: Props) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
   return (
     <>
-      <div className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row justify-between gap-4 ">
-        <div className="lg:w-[63%] md:w-[58%] flex flex-col gap-1">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row justify-between gap-4 "
+      >
+        <Link href={'/article'} className="lg:w-[63%] md:w-[58%] flex flex-col gap-1">
           <span className=" text-xs">Featured</span>
           <Image src={FBImage} alt="image" className=" w-[686px] h-[386px]" />
           <span className=" text-xl mt-2">
@@ -37,13 +48,13 @@ const DeskArticle = (props: Props) => {
               <strong> November 3, 2023</strong>
             </span>
           </div>
-        </div>
+        </Link>
         <div className="lg:w-[34%] md:w-[42%] py-3 overflow-hidden flex flex-col gap-3">
           <span className="text-xl text-[#AA0099] uppercase">
             Recent Articles
           </span>
 
-          <div className="w-full h-[84px] flex flex-row">
+          <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -67,9 +78,9 @@ const DeskArticle = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-          <div className="w-full h-[84px] flex flex-row">
+         <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -93,9 +104,9 @@ const DeskArticle = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-          <div className="w-full h-[84px] flex flex-row">
+         <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -119,9 +130,9 @@ const DeskArticle = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-          <div className="w-full h-[84px] flex flex-row">
+         <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -145,9 +156,9 @@ const DeskArticle = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-          <div className="w-full h-[84px] flex flex-row">
+         <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -171,10 +182,10 @@ const DeskArticle = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

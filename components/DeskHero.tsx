@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import AdImage from "./../public/adImage.jpeg";
+import { motion } from "framer-motion";
 import Homee from "./../public/home.png";
 import FeaturedImage from "./../public/featuredImg.jpeg";
 import Blue from "./../public/blue.jpeg";
@@ -9,9 +10,18 @@ import Link from "next/link";
 type Props = {};
 
 const DeskHero = (props: Props) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
   return (
     <>
-      <div className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 ">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 "
+      >
         <div className=" w-[20%] hidden lg:flex flex-col gap-1">
           <span className=" text-xs">Ad</span>
           <Image src={AdImage} alt="image" className=" w-[290px] h-[170px]" />
@@ -30,7 +40,7 @@ const DeskHero = (props: Props) => {
             AGO
           </p>
         </div>
-        <div className="lg:w-[44%] md:w-[58%] flex flex-col gap-1">
+        <Link href={'/article'} className="lg:w-[44%] md:w-[58%] flex flex-col gap-1">
           <span className=" text-xs">Featured</span>
           <Image
             src={FeaturedImage}
@@ -61,13 +71,13 @@ const DeskHero = (props: Props) => {
               <strong> November 3, 2023</strong>
             </span>
           </div>
-        </div>
+        </Link>
         <div className="lg:w-[34%] md:w-[42%] py-3 overflow-hidden flex flex-col gap-3">
           <span className="text-xl text-[#AA0099] uppercase">
             Recent Articles
           </span>
 
-           <div className="w-full h-[84px] flex flex-row">
+          <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -91,9 +101,9 @@ const DeskHero = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-        <div className="w-full h-[84px] flex flex-row">
+           <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -117,9 +127,9 @@ const DeskHero = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-         <div className="w-full h-[84px] flex flex-row">
+           <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -143,9 +153,9 @@ const DeskHero = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-         <div className="w-full h-[84px] flex flex-row">
+           <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -169,9 +179,9 @@ const DeskHero = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-         <div className="w-full h-[84px] flex flex-row">
+           <Link href={'/article'} className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[34%] h-[79px] rounded-lg flex items-center">
               <Image src={Blue} alt="" className="w-full h-full rounded-lg" />
             </div>
@@ -195,10 +205,10 @@ const DeskHero = (props: Props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
         </div>
-      </div>
+      </motion.div>
       <div className="mb-10 md:w-[85%] lg:w-[80%] hidden md:flex flex-col mt-10 py-5 mx-auto px-4">
         <span className="font-semibold text-xl">News & Articles</span>
         <p className="text-xs mt-4">

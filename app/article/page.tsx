@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Banner from "@/components/Banner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -49,6 +50,11 @@ const page = () => {
     fetchNews();
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <div className="flex flex-col">
       <Banner />
@@ -62,15 +68,18 @@ const page = () => {
 
       <div className="p-5">
         <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
-          <span>Share Piece</span>
+          <span className='text-xs'>Share Piece</span>
           <span>|</span>
           <Image src={Share} alt="share" />
           <Image src={Twitter} alt="twitter" />
           <Image src={Chain} alt="chain" />
         </div>
 
-        <article
-          className="py-5 lg:pr-80 prose-lg 
+        <motion.article
+           initial="hidden"
+           animate="visible"
+           variants={containerVariants}
+          className="py-5 lg:pr-80 prose-sm md:prose-lg 
           dark:text-white text-black mt-10 mb-10 flex flex-col"
         >
           <span className=" text-xl lg:text-4xl font-semibold">Garlic bread with cheese: What the science tells us</span>
@@ -138,7 +147,7 @@ const page = () => {
             ‘founding memberships’ is a unique and commemorative initiative to
             honor Nelson Mandela’s legacy ten years after his passing.
           </p>
-        </article>
+        </motion.article>
 
         <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
 

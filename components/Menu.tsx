@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import DarkSwitch from "./../public/darkSwitch.svg";
 import LightSwitch from "./../public/lightSwitch.svg";
 import ClearNight from "./../public/clearNight.svg";
+import Link from "next/link";
 
 type Props = {};
 
@@ -51,29 +52,29 @@ const Menu = (props: Props) => {
         onClick={() => setOpen(true)}
         className={clsx(
 
-          "h-screen fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] overflow-hidden lg:hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
+          "h-screen fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] text-sm overflow-hidden lg:hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
           open ? "translate-x-[0]" : "-translate-x-[100%]"
         )}
       >
-        <div className="px-4 py-6 flex flex-col">
+        <div className="h-full w-full px-4 py-6 flex flex-col">
           <div className="w-full flex flex-row items-center gap-4">
             <Image src={Logo} alt="logo" />
             <span>Blockchain Buzz Africa</span>
           </div>
 
-          <div className="py-4 flex flex-col gap-4">
+          <div className="py-4 w-full h-[55%] flex flex-col gap-4">
             <span>Menu</span>
 
             <div className="px-2 flex flex-col gap-5">
-              <div className="flex flex-row gap-4">
+              <Link href={'/'} className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]">
                 <Image src={HomeIcon} alt="homeIcon" />
                 <span>Home</span>
-              </div>
-              <div className="flex flex-row gap-4">
+              </Link>
+              <Link href={'/dappstore'} className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]">
                 <Image src={NewsIcon} alt="newsIcon" />
-                <span>News</span>
-              </div>
-              <div className="flex flex-row gap-4">
+                <span>Dapp Store</span>
+              </Link>
+              {/* <div className="flex flex-row gap-4">
                 <Image src={LearnIcon} alt="learnIcon" />
                 <span>Learn</span>
               </div>
@@ -83,7 +84,7 @@ const Menu = (props: Props) => {
               </div>
               <div className="flex flex-row gap-4">
                 <Image src={DappIcon} alt="dappIcon" />
-                <span>Dapp Store</span>
+                <span>News</span>
               </div>
               <div className="flex flex-row gap-4">
                 <Image src={CareerIcon} alt="careerIcon" />
@@ -96,7 +97,7 @@ const Menu = (props: Props) => {
               <div className="flex flex-row gap-4">
                 <Image src={SignInIcon} alt="signInIcon" />
                 <span>Sign In</span>
-              </div>
+              </div> */}
             </div>
           </div>
 

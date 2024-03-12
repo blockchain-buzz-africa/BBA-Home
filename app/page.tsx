@@ -48,8 +48,12 @@ const Home: React.FC = () => {
     fetchNews();
   }, []);
 
+
   return (
-    <div className="flex flex-col">
+    <div 
+      className="flex flex-col"
+     
+    >
       <Banner />
       <Header />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
@@ -62,7 +66,7 @@ const Home: React.FC = () => {
       <PodcastVideos />
       <PodcastSpaces />
       <Footer />
-    </div>
+      </div>
   );
 }
 
