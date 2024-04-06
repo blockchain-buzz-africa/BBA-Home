@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface Article {
-  id: string;
+  _id: string;
   image: string;
   name: string;
   author: string;
@@ -32,8 +33,9 @@ const RecentArticles: React.FC<Props> = ({ news }) => {
       <span className="text-xl text-[#AA0099] uppercase">Recent Articles</span>
 
       {news && news.map((item: Article) => (
-        <React.Fragment key={item.id}>
-          <div className="w-full h-[84px] flex flex-row">
+        <React.Fragment key={item._id}>
+          <Link href={{ pathname: "/article", query: {_id: item?._id } }}
+           className="w-full h-[84px] flex flex-row">
             <div className="px-2 w-[30%] h-[79px] rounded-lg flex items-center">
               <img src={item.image} alt={item.name} className="w-full h-full rounded-lg" />
             </div>
@@ -52,8 +54,8 @@ const RecentArticles: React.FC<Props> = ({ news }) => {
                 <p>{item.title}</p>
               </div>
             </div>
-          </div>
-          <div key={item.id} className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+          </Link>
+          <div key={item._id} className="mt-1 w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
         </React.Fragment>
       ))}
     </div>
