@@ -28,14 +28,13 @@ interface Article {
 }
 
 type Props = {
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 const ArticlePage: React.FC<Props> = ({ searchParams }) => {
-  const _idString = searchParams?._id as string
+  const _idString = searchParams?._id as string;
 
-
-  const [singleNews, setSingleNews] = useState<Article | null>(null);//single item 
+  const [singleNews, setSingleNews] = useState<Article | null>(null); //single item
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -44,14 +43,13 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       try {
         if (_idString) {
           const fetchedNews = await getSingleNews(_idString);
-          console.log("fetchedNews", fetchedNews)
+          console.log("fetchedNews", fetchedNews);
           setSingleNews(fetchedNews);
 
-
-          console.log("Single news", singleNews)
+          console.log("Single news", singleNews);
         }
       } catch (err) {
-        setError('Failed to fetch news');
+        setError("Failed to fetch news");
       } finally {
         setIsLoading(false);
       }
@@ -64,8 +62,6 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
     console.log("Single news", singleNews);
   }, [singleNews]);
 
-
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -73,7 +69,6 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -91,45 +86,39 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       {/* <DeskArticle />
       <HeroSection /> */}
 
+      {singleNews ? (
+        <React.Fragment>
+          <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="w-full h-[280px]"
+            >
+              <Image
+                src={singleNews.image}
+                alt={singleNews.image}
+                className="w-full h-full"
+                width={350}
+                height={280}
+              />
+            </motion.div>
 
-
-{singleNews ? (
-  <React.Fragment>
-    <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="w-full h-[280px]"
-      >
-        <Image
-          src={singleNews.image}
-          alt={singleNews.image}
-          className="w-full h-full"
-          width={350}
-          height={280}
-        />
-      </motion.div>
-
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="mt-2"
-      >
-        <span className="text-base md:text-xl">
-          {singleNews.title}
-        </span>
-        <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
-        <p>{moment(singleNews.createdAt).format('MMM D, YYYY')}</p>
-          <p> Author: {singleNews.author}</p>
-        </div>
-      </motion.div>
-    </div>
-  </React.Fragment>
-) : null}
-
-
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="mt-2"
+            >
+              <span className="text-base md:text-xl">{singleNews.title}</span>
+              <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+                <p>{moment(singleNews.createdAt).format("MMM D, YYYY")}</p>
+                <p> Author: {singleNews.author}</p>
+              </div>
+            </motion.div>
+          </div>
+        </React.Fragment>
+      ) : null}
 
       <div className="p-5">
         <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
@@ -147,13 +136,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           className="py-5 lg:pr-80 prose-sm md:prose-lg 
           dark:text-white text-black mt-10 mb-10 flex flex-col"
         >
-          <span className=" text-xl lg:text-4xl font-semibold">
-            Garlic bread with cheese: What the science tells us
-          </span>
-          
-          <p>
-           {}
-          </p>
+          {singleNews ? <p>{singleNews.content}</p> : null}
         </motion.article>
 
         <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
