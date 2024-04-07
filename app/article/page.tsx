@@ -134,7 +134,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           animate="visible"
           variants={containerVariants}
           className="py-5 lg:pr-80 prose-sm md:prose-lg 
-  dark:text-white text-black mt-10 mb-10 flex flex-col"
+           dark:text-white text-black mt-10 mb-10 flex flex-col"
         >
           <div
             className="prose"
