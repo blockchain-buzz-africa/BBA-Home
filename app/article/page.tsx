@@ -34,7 +34,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   const _idString = searchParams?._id as string
 
 
-  const [singleNews, setSingleNews] = useState<Article[] | null>(null);
+  const [singleNews, setSingleNews] = useState<Article | null>(null);//single item 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -45,6 +45,9 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           const fetchedNews = await getSingleNews(_idString);
           console.log("fetchedNews", fetchedNews)
           setSingleNews(fetchedNews);
+
+
+          console.log("Single news", singleNews)
         }
       } catch (err) {
         setError('Failed to fetch news');
@@ -56,8 +59,10 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
     fetchNews();
   }, [_idString]);
 
+  useEffect(() => {
+    console.log("Single news", singleNews);
+  }, [singleNews]);
 
-  console.log("singleNews", singleNews)
 
 
   if (isLoading) {
@@ -87,39 +92,41 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
 
 
 
-      {singleNews &&
-        singleNews.map((item: Article) => (
+{singleNews ? (
+  <React.Fragment>
+    <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="w-full h-[280px]"
+      >
+        <Image
+          src={singleNews.image}
+          alt={singleNews.image}
+          className="w-full h-full"
+          width={350}
+          height={280}
+        />
+      </motion.div>
 
-          <React.Fragment key={item._id}>
-            <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-                className="w-full h-[280px]"
-              >
-                
-                <Image src={item.image} alt={item.image} className="w-full h-full" width={350} height={280} />
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-                className="mt-2"
-              >
-                <span className="text-base md:text-xl">
-                   {item.title}
-                </span>
-                <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
-                  <p>{item.createdAt}</p>
-                  <p>{item.author}</p>
-                </div>
-              </motion.div>
-            </div>
-          </React.Fragment>
-          
-        ))}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="mt-2"
+      >
+        <span className="text-base md:text-xl">
+          {singleNews.title}
+        </span>
+        <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
+          <p>{singleNews.createdAt}</p>
+          <p>{singleNews.author}</p>
+        </div>
+      </motion.div>
+    </div>
+  </React.Fragment>
+) : null}
 
 
 
@@ -142,69 +149,9 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           <span className=" text-xl lg:text-4xl font-semibold">
             Garlic bread with cheese: What the science tells us
           </span>
+          
           <p>
-            For years parents have espoused the health benefits of eating garlic
-            bread with cheese to their children, with the food earning such an
-            iconic status in our culture that kids will often dress up as warm,
-            cheesy loaf for Halloween.
-          </p>
-          <p>
-            But a recent study shows that the celebrated appetizer may be linked
-            to a series of rabies cases springing up around the country.
-          </p>
-          <p>
-            The Nelson Mandela Foundation (NMF) has decided to leverage
-            non-fungible tokens (NFTs) as a fundraising initiative for its work,
-            according to reports in South Africa. NFTs are unique digital assets
-            that can represent ownership or proof of authenticity of a
-            particular digital item such as artwork, music, or collectibles. In
-            this case, the NMF is selling 1,918 NFTs with a value of $1,000
-            (R19,000) each in collaboration with digital works marketplace,
-            Glorious Digital. “This innovative and exclusive membership offers a
-            rare chance to partner with the iconic Nelson Mandela Foundation and
-            join a community of supporters from around the world, united to
-            uphold Mandela’s legacy.” The foundation’s decision to release 1,918
-            ‘founding memberships’ is a unique and commemorative initiative to
-            honor Nelson Mandela’s legacy ten years after his passing. The
-            Nelson Mandela Foundation (NMF) has decided to leverage non-fungible
-            tokens (NFTs) as a fundraising initiative for its work, according to
-            reports in South Africa. NFTs are unique digital assets that can
-            represent ownership or proof of authenticity of a particular digital
-            item such as artwork, music, or collectibles. In this case, the NMF
-            is selling 1,918 NFTs with a value of $1,000 (R19,000) each in
-            collaboration with digital works marketplace, Glorious Digital.
-            “This innovative and exclusive membership offers a rare chance to
-            partner with the iconic Nelson Mandela Foundation and join a
-            community of supporters from around the world, united to uphold
-            Mandela’s legacy.” The foundation’s decision to release 1,918
-            ‘founding memberships’ is a unique and commemorative initiative to
-            honor Nelson Mandela’s legacy ten years after his passing. The
-            Nelson Mandela Foundation (NMF) has decided to leverage non-fungible
-            tokens (NFTs) as a fundraising initiative for its work, according to
-            reports in South Africa. NFTs are unique digital assets that can
-            represent ownership or proof of authenticity of a particular digital
-            item such as artwork, music, or collectibles. In this case, the NMF
-            is selling 1,918 NFTs with a value of $1,000 (R19,000) each in
-            collaboration with digital works marketplace, Glorious Digital.
-            “This innovative and exclusive membership offers a rare chance to
-            partner with the iconic Nelson Mandela Foundation and join a
-            community of supporters from around the world, united to uphold
-            Mandela’s legacy.” The foundation’s decision to release 1,918
-            ‘founding memberships’ is a unique and commemorative initiative to
-            honor Nelson Mandela’s legacy ten years after his passing. The
-            Nelson Mandela Foundation (NMF) has decided to leverage non-fungible
-            tokens (NFTs) as a fundraising initiative for its work, according to
-            reports in South Africa. NFTs are unique digital assets that can
-            represent ownership or proof of authenticity of a particular digital
-            item such as artwork, music, or collectibles. In this case, the NMF
-            is selling 1,918 NFTs with a value of $1,000 (R19,000) each in
-            collaboration with digital works marketplace, Glorious Digital.
-            “This innovative and exclusive membership offers a rare chance to
-            partner with the iconic Nelson Mandela Foundation and join a
-            community of supporters from around the world, united to uphold
-            Mandela’s legacy.” The foundation’s decision to release 1,918
-            ‘founding memberships’ is a unique and commemorative initiative to
-            honor Nelson Mandela’s legacy ten years after his passing.
+           {}
           </p>
         </motion.article>
 
