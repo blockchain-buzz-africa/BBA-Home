@@ -18,7 +18,7 @@ const DeskHero = (props: Props) => {
     <>
       <motion.div
         initial="hidden"
-        animate="visible"
+        animate="visible" 
         variants={containerVariants}
         className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 "
       >

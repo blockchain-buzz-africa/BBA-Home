@@ -15,8 +15,8 @@ import Twitter from "./../../public/twitter.svg";
 import Chain from "./../../public/chain.svg";
 import Link from "next/link";
 import DeskArticle from "@/components/DeskArticle";
-import { getSingleNews } from "@/helpers";
 import moment from "moment";
+import { getSingleNews } from "@/helpers";
 
 interface Article {
   _id: string;
@@ -110,7 +110,8 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
               variants={containerVariants}
               className="mt-2"
             >
-              <span className="text-base md:text-xl">{singleNews.title}</span>
+              <span className="text-base md:text-xl text-black dark:text-white">{singleNews.title}</span>
+
               <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
                 <p>{moment(singleNews.createdAt).format("MMM D, YYYY")}</p>
                 <p> Author: {singleNews.author}</p>
@@ -134,10 +135,10 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           animate="visible"
           variants={containerVariants}
           className="py-5 lg:pr-80 prose-sm md:prose-lg 
-           dark:text-white text-black mt-10 mb-10 flex flex-col"
+  dark:text-white text-black mt-10 mb-10 flex flex-col"
         >
           <div
-            className="prose"
+            className="prose text-black dark:text-white"
             dangerouslySetInnerHTML={{ __html: singleNews?.content || "" }}
           />
         </motion.article>

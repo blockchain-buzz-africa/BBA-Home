@@ -11,6 +11,7 @@ import SignInIcon from "./../public/signInIcon.svg";
 import DappIcon from "./../public/dappIcon.svg";
 import CareerIcon from "./../public/careerIcon.svg";
 import LearnIcon from "./../public/learnIcon.svg";
+import MarketsIcon from "./../public/market.svg";
 import NewsIcon from "./../public/newsIcon.svg";
 import BuzzIcon from "./../public/buzzIcon.svg";
 import Menuu from "./../public/menu.svg";
@@ -51,7 +52,6 @@ const Menu = (props: Props) => {
       <div
         onClick={() => setOpen(true)}
         className={clsx(
-
           "h-screen fixed bottom-0 left-0 right-0 top-0 z-50 w-[71%] text-sm overflow-hidden lg:hidden  flex flex-col bg-slate-50 dark:bg-[#21262D] transition-transform duration-300 ease-in-out md:hidden",
           open ? "translate-x-[0]" : "-translate-x-[100%]"
         )}
@@ -66,14 +66,28 @@ const Menu = (props: Props) => {
             <span>Menu</span>
 
             <div className="px-2 flex flex-col gap-5">
-              <Link href={'/'} className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]">
+              <Link
+                href={"/"}
+                className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]"
+              >
                 <Image src={HomeIcon} alt="homeIcon" />
                 <span>Home</span>
               </Link>
-              <Link href={'/dappstore'} className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]">
+              <Link
+                href={"/dappstore"}
+                className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]"
+              >
                 <Image src={NewsIcon} alt="newsIcon" />
                 <span>Dapp Store</span>
               </Link>
+              <Link
+                href={"/markets"}
+                className="flex p-2 flex-row gap-4 rounded-lg active:bg-[#E5E7EB] dark:active:bg-[#313843] dark:hover:bg-[#313843] hover:bg-[#E5E7EB]"
+              >
+                <Image src={MarketsIcon} alt="marketsIcon" />
+                <span>Markets</span>
+              </Link>
+
               {/* <div className="flex flex-row gap-4">
                 <Image src={LearnIcon} alt="learnIcon" />
                 <span>Learn</span>
@@ -130,11 +144,15 @@ const Menu = (props: Props) => {
                 )}
               </div>
 
-              {theme === "light" ? (
-                <Image src={LightSwitch} alt="lightSwitch" />
-              ) : (
-                <Image src={DarkSwitch} alt="darkSwitch" />
-              )}
+              <div
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              >
+                {theme === "light" ? (
+                  <Image src={LightSwitch} alt="lightSwitch" />
+                ) : (
+                  <Image src={DarkSwitch} alt="darkSwitch" />
+                )}
+              </div>
             </div>
           </div>
         </div>

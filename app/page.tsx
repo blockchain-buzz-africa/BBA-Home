@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 import DeskHero from '@/components/DeskHero';
 
 interface Article {
-  id: string;
+  _id: string;
   image: string;
   name: string;
   author: string;
