@@ -6,22 +6,21 @@ export const getData = async () => {
     if (!response.data) {
       throw new Error("Network response was not ok");
     }
-    return response;
+    // Return just the data part for simplicity in further processing
+    return response.data; 
   } catch (error) {
     throw error;
   }
 };
 
-export const getSingleNews = async (_id: string) => { // _id should be a string
+export const getSingleNews = async (_id: string) => {
   try {
-    const response = await getData();
-    const news = response.data.data;
-
-    // No need for `await` with `.find` as it's synchronous
-    const singleItemNews = news.find((iNews: any) => iNews._id === _id);
+    const newsData = await getData(); // Assuming this now correctly returns the data part directly
+    // Since getData is adjusted to return the data part directly, 
+    // we can access the data array directly assuming the structure is { data: [...] }
+    const singleItemNews = newsData.data.find((iNews: any) => iNews._id === _id);
     return singleItemNews;
   } catch (error) {
     throw error;
   }
 };
-
