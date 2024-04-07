@@ -1,10 +1,11 @@
-
-
 import type { Metadata } from "next";
 import { Tienne } from "next/font/google"; // Import Tienne
 import "./globals.css";
 import ThemeProvide from "@/context/ThemeProvider";
 import ScrollUp from "@/components/ScrollUp";
+import { CryptoProvider } from "@/context/CryptoContext";
+import { TrendingProvider } from "@/context/TrendingContext";
+import { StorageProvider } from "@/context/StorageContext";
 
 const tienne = Tienne({
   subsets: ["latin"],
@@ -23,10 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvide>
-          <body className={tienne.className}>{children}</body>
-          <ScrollUp />
-      </ThemeProvide>
+      <CryptoProvider>
+        <TrendingProvider>
+          <StorageProvider>
+            <ThemeProvide>
+              <body className={tienne.className}>{children}</body>
+              <ScrollUp />
+            </ThemeProvide>
+          </StorageProvider>
+        </TrendingProvider>
+      </CryptoProvider>
     </html>
   );
 }

@@ -26,16 +26,16 @@ const MarketRow: React.FC = () => {
       }
 
       const data: Market[] = await response.json();
-      
+      console.log(data);
       setMarkets(data.slice(0, 11));
     } catch (error) {
-      throw error;
+      console.error("Error fetching markets:", error);
     }
   }
 
   useEffect(() => {
     fetchMarkets();
-  }, [markets]);
+  }, []);
 
   return (
     <div className="w-full h-12 flex items-center bg-white dark:bg-[#21262D] whitespace-nowrap overflow-hidden">
