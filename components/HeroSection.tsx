@@ -1,27 +1,44 @@
 import Image from "next/image";
-import Homee from "./../public/home.png";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-type Props = {};
+type Article = {
+  _id: string;
+  image: string;
+  name: string;
+  author: string;
+  title: string;
+  createdAt: string;
+};
 
-const HeroSection = (props: Props) => {
+type Props = {
+  latestArticle?: Article;
+};
+
+const HeroSection = ({ latestArticle }: Props) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  // Format the date for display
+  const formattedDate = latestArticle ? new Date(latestArticle.createdAt).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }) : '';
+
   return (
-    <Link
-      href={"/article"}
-      className="p-5 md:hidden lg:hidden flex flex-col gap-3"
-    >
+    
+    <Link href={{ pathname: "/article", query: {_id: latestArticle?._id } }} className="p-5 md:hidden lg:hidden flex flex-col gap-3">
       <motion.div
-       initial="hidden"
-       animate="visible"
-       variants={containerVariants}
-      className="w-full h-[280px]">
-        <Image src={Homee} alt="home" className="w-full h-full" />
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="w-full h-[280px]"
+      >
+       
+        <Image src={latestArticle?.image || ""} width={450} height={150} alt="article image" className="h-full w-full" />
       </motion.div>
 
       <motion.div
@@ -31,11 +48,11 @@ const HeroSection = (props: Props) => {
         className="mt-2"
       >
         <span className="text-base md:text-xl">
-          Africa gearing up for the second edition of the AMAS 2023
+          {latestArticle?.title || 'Loading...'}
         </span>
         <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
-          <p>Sep 29 2023</p>
-          <p>Author : Michael Loupa</p>
+          <p>{formattedDate}</p>
+          <p>Author: {latestArticle?.author || 'Loading...'}</p>
         </div>
       </motion.div>
     </Link>
