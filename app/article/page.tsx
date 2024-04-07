@@ -20,7 +20,6 @@ import { getSingleNews } from "@/helpers";
 interface Article {
   _id: string;
   image: string;
-  name: string;
   author: string;
   title: string;
   content: string;
@@ -31,38 +30,44 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const ArticlePage = ({ searchParams }: Props) => {
+const ArticlePage: React.FC<Props> = ({ searchParams }) => {
+  const _idString = searchParams?._id as string
 
-  const _idString = searchParams?._id as string;
 
-  const _id = _idString
+  const [singleNews, setSingleNews] = useState<Article[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // const iNews = await getSingleNews("650738704065ee8ed686ae32")
-  
- console.log("My id", _id)
-//  const [news, setNews] = useState<Article | null>(null); 
-
-//  console.log("Here is the news ", news)
-
- 
-useEffect(() => {
-  const fetchNewsDetail = async () => {
-    try {
-      // Assuming newsId is already a string and passed as a prop to this component
-      const detail = await getSingleNews("650738704065ee8ed686ae32");
-      if(detail){
-
-        console.log("details", detail);
-
-        // setNews(detail)
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        if (_idString) {
+          const fetchedNews = await getSingleNews(_idString);
+          console.log("fetchedNews", fetchedNews)
+          setSingleNews(fetchedNews);
+        }
+      } catch (err) {
+        setError('Failed to fetch news');
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-     console.log(error)
-  };
-}
+    };
 
-  fetchNewsDetail();
-}, [_idString]); 
+    fetchNews();
+  }, [_idString]);
+
+
+  console.log("singleNews", singleNews)
+
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -80,8 +85,11 @@ useEffect(() => {
       {/* <DeskArticle />
       <HeroSection /> */}
 
-      {/* {news &&
-        news.map((item: Article) => (
+
+
+      {singleNews &&
+        singleNews.map((item: Article) => (
+
           <React.Fragment key={item._id}>
             <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
               <motion.div
@@ -90,7 +98,8 @@ useEffect(() => {
                 variants={containerVariants}
                 className="w-full h-[280px]"
               >
-                <Image src={item.image} alt={item.name} className="w-full h-full" width={350} height={280} />
+                
+                <Image src={item.image} alt={item.image} className="w-full h-full" width={350} height={280} />
               </motion.div>
 
               <motion.div
@@ -109,7 +118,10 @@ useEffect(() => {
               </motion.div>
             </div>
           </React.Fragment>
-        ))} */}
+          
+        ))}
+
+
 
       <div className="p-5">
         <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
@@ -128,11 +140,71 @@ useEffect(() => {
           dark:text-white text-black mt-10 mb-10 flex flex-col"
         >
           <span className=" text-xl lg:text-4xl font-semibold">
-           {/* {news!.title} */}
+            Garlic bread with cheese: What the science tells us
           </span>
-        
           <p>
-           {/* {news!.content} */}
+            For years parents have espoused the health benefits of eating garlic
+            bread with cheese to their children, with the food earning such an
+            iconic status in our culture that kids will often dress up as warm,
+            cheesy loaf for Halloween.
+          </p>
+          <p>
+            But a recent study shows that the celebrated appetizer may be linked
+            to a series of rabies cases springing up around the country.
+          </p>
+          <p>
+            The Nelson Mandela Foundation (NMF) has decided to leverage
+            non-fungible tokens (NFTs) as a fundraising initiative for its work,
+            according to reports in South Africa. NFTs are unique digital assets
+            that can represent ownership or proof of authenticity of a
+            particular digital item such as artwork, music, or collectibles. In
+            this case, the NMF is selling 1,918 NFTs with a value of $1,000
+            (R19,000) each in collaboration with digital works marketplace,
+            Glorious Digital. “This innovative and exclusive membership offers a
+            rare chance to partner with the iconic Nelson Mandela Foundation and
+            join a community of supporters from around the world, united to
+            uphold Mandela’s legacy.” The foundation’s decision to release 1,918
+            ‘founding memberships’ is a unique and commemorative initiative to
+            honor Nelson Mandela’s legacy ten years after his passing. The
+            Nelson Mandela Foundation (NMF) has decided to leverage non-fungible
+            tokens (NFTs) as a fundraising initiative for its work, according to
+            reports in South Africa. NFTs are unique digital assets that can
+            represent ownership or proof of authenticity of a particular digital
+            item such as artwork, music, or collectibles. In this case, the NMF
+            is selling 1,918 NFTs with a value of $1,000 (R19,000) each in
+            collaboration with digital works marketplace, Glorious Digital.
+            “This innovative and exclusive membership offers a rare chance to
+            partner with the iconic Nelson Mandela Foundation and join a
+            community of supporters from around the world, united to uphold
+            Mandela’s legacy.” The foundation’s decision to release 1,918
+            ‘founding memberships’ is a unique and commemorative initiative to
+            honor Nelson Mandela’s legacy ten years after his passing. The
+            Nelson Mandela Foundation (NMF) has decided to leverage non-fungible
+            tokens (NFTs) as a fundraising initiative for its work, according to
+            reports in South Africa. NFTs are unique digital assets that can
+            represent ownership or proof of authenticity of a particular digital
+            item such as artwork, music, or collectibles. In this case, the NMF
+            is selling 1,918 NFTs with a value of $1,000 (R19,000) each in
+            collaboration with digital works marketplace, Glorious Digital.
+            “This innovative and exclusive membership offers a rare chance to
+            partner with the iconic Nelson Mandela Foundation and join a
+            community of supporters from around the world, united to uphold
+            Mandela’s legacy.” The foundation’s decision to release 1,918
+            ‘founding memberships’ is a unique and commemorative initiative to
+            honor Nelson Mandela’s legacy ten years after his passing. The
+            Nelson Mandela Foundation (NMF) has decided to leverage non-fungible
+            tokens (NFTs) as a fundraising initiative for its work, according to
+            reports in South Africa. NFTs are unique digital assets that can
+            represent ownership or proof of authenticity of a particular digital
+            item such as artwork, music, or collectibles. In this case, the NMF
+            is selling 1,918 NFTs with a value of $1,000 (R19,000) each in
+            collaboration with digital works marketplace, Glorious Digital.
+            “This innovative and exclusive membership offers a rare chance to
+            partner with the iconic Nelson Mandela Foundation and join a
+            community of supporters from around the world, united to uphold
+            Mandela’s legacy.” The foundation’s decision to release 1,918
+            ‘founding memberships’ is a unique and commemorative initiative to
+            honor Nelson Mandela’s legacy ten years after his passing.
           </p>
         </motion.article>
 
@@ -148,7 +220,7 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* <RecentArticles news={""} /> */}
+      {/* <RecentArticles news={singleNews} /> */}
 
       <Footer />
     </div>
