@@ -16,6 +16,7 @@ import Chain from "./../../public/chain.svg";
 import Link from "next/link";
 import DeskArticle from "@/components/DeskArticle";
 import { getSingleNews } from "@/helpers";
+import moment from "moment";
 
 interface Article {
   _id: string;
@@ -120,8 +121,8 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           {singleNews.title}
         </span>
         <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
-          <p>{singleNews.createdAt}</p>
-          <p>{singleNews.author}</p>
+        <p>{moment(singleNews.createdAt).format('MMM D, YYYY')}</p>
+          <p> Author: {singleNews.author}</p>
         </div>
       </motion.div>
     </div>
