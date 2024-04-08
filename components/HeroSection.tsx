@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Loader from "./Loader";
 
 type Article = {
   _id: string;
@@ -38,7 +39,11 @@ const HeroSection = ({ latestArticle }: Props) => {
         className="w-full h-[280px]"
       >
        
-        <Image src={latestArticle?.image || ""} width={450} height={150} alt="article image" className="h-full w-full" />
+        {latestArticle?.image ? (
+          <img src={latestArticle?.image} width={450} height={150} alt="article image" className="h-full w-full" />
+        ) : 
+          <Loader />
+        }
       </motion.div>
 
       <motion.div
@@ -48,11 +53,11 @@ const HeroSection = ({ latestArticle }: Props) => {
         className="mt-2"
       >
         <span className="text-base md:text-xl">
-          {latestArticle?.title || 'Loading...'}
+          {latestArticle?.title}
         </span>
         <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
           <p>{formattedDate}</p>
-          <p>Author: {latestArticle?.author || 'Loading...'}</p>
+          <p>Author: {latestArticle?.author}</p>
         </div>
       </motion.div>
     </Link>

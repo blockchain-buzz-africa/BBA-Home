@@ -16,11 +16,14 @@ import Chain from "./../../public/chain.svg";
 import Link from "next/link";
 import DeskArticle from "@/components/DeskArticle";
 import moment from "moment";
-import { getSingleNews } from "@/helpers";
+import { getData, getSingleNews } from "@/helpers";
+import RecentDeskArticles from "@/components/RecentDeskArticles";
+import Loader from "@/components/Loader";
 
 interface Article {
   _id: string;
   image: string;
+  name: string;
   author: string;
   title: string;
   content: string;
@@ -35,8 +38,33 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   const _idString = searchParams?._id as string;
 
   const [singleNews, setSingleNews] = useState<Article | null>(null); //single item
+  const [anews, setAnews] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch("https://api.bbafrica.co/api/dapps-news");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const newsData = await response.json();
+        const sortedNews = newsData.data.sort((a: Article, b: Article) => {
+          const dateA = new Date(a.createdAt);
+          const dateB = new Date(b.createdAt);
+          return dateB.getTime() - dateA.getTime();
+        });
+        console.log(sortedNews);
+
+        setAnews(sortedNews.slice(0, 5));
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -44,6 +72,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
         if (_idString) {
           const fetchedNews = await getSingleNews(_idString);
           console.log("fetchedNews", fetchedNews);
+
           setSingleNews(fetchedNews);
 
           console.log("Single news", singleNews);
@@ -63,12 +92,33 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }, [singleNews]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />
   }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const formattedDate = date.toLocaleDateString(undefined, options);
+
+    return formattedDate;
+  }
+
+  // Approximating lines by character count
+  const contentPreviewLimit = 500; // Adjust based on your average character per line * 10 lines
+  const showReadMore =
+    singleNews?.content && singleNews.content.length > contentPreviewLimit;
+
+  const contentPreview = showReadMore
+    ? `${singleNews?.content.slice(0, contentPreviewLimit)}...`
+    : singleNews?.content;
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -83,8 +133,49 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       <MarketRow />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
 
-      {/* <DeskArticle />
-      <HeroSection /> */}
+      {singleNews ? (
+        <>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row justify-between gap-4 "
+          >
+            <div
+              className="lg:w-[63%] md:w-[58%] flex flex-col gap-1"
+            >
+              <span className=" text-xs">Featured</span>
+              <Image
+                src={singleNews.image}
+                alt="image"
+                width={686}
+                height={386}
+                className=" w-[686px] h-[386px]"
+              />
+              <span className=" text-xl mt-2">{singleNews.title}</span>
+              <div
+                className="text-sm text-[#6A6A6A] dark:text-[#b2aeae]"
+                dangerouslySetInnerHTML={{ __html: contentPreview || "" }}
+              />
+              <a href="#content" className="text-[#AA0099] text-xs mt-2">Read more</a>
+
+              <div className="text-xs flex-row gap-4 text-[#6A6A6A] dark:text-[#b2aeae]">
+                <span className="uppercase">
+                  {" "}
+                  <strong>By</strong> {singleNews.author}
+                </span>
+                <span>
+                  <strong> {formatDate(singleNews.createdAt)}</strong>
+                </span>
+              </div>
+            </div>
+            <RecentDeskArticles anews={anews} />
+          </motion.div>
+        </>
+      ) : null}
+
+      {/* <DeskArticle /> */}
+      {/* <HeroSection />  */}
 
       {singleNews ? (
         <React.Fragment>
@@ -110,7 +201,9 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
               variants={containerVariants}
               className="mt-2"
             >
-              <span className="text-base md:text-xl text-black dark:text-white">{singleNews.title}</span>
+              <span className="text-base md:text-xl text-black dark:text-white">
+                {singleNews.title}
+              </span>
 
               <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
                 <p>{moment(singleNews.createdAt).format("MMM D, YYYY")}</p>
@@ -121,7 +214,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
         </React.Fragment>
       ) : null}
 
-      <div className="p-5">
+      <div id="content" className="p-5">
         <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
           <span className="text-xs">Share Piece</span>
           <span>|</span>
