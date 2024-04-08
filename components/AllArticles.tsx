@@ -11,11 +11,23 @@ interface Article {
   title: string;
 }
 
-interface Props {
+interface Props { 
   fnews: Article[];
 }
 
 const AllArticles: React.FC<Props> = ({ fnews }) => {
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    
+    return formattedDate;
+  }
+
   return (
     <div className="mb-10 md:w-[85%] lg:w-[80%] hidden md:flex flex-col mt-10 py-5 mx-auto px-4">
       <span className="font-semibold text-xl">News & Articles</span>
@@ -35,7 +47,7 @@ const AllArticles: React.FC<Props> = ({ fnews }) => {
                     {item.title}
                 </span>
                 <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
-                  <p>{item.createdAt}</p>
+                  <p>{formatDate(item.createdAt)}</p>
                   <p>Author : {item.author}</p>
                 </div>
               </div>

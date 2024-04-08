@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { HighLowIndicator } from "./HighLowIndicator";
 import { CryptoContext } from "@/context/CryptoContext";
+import Loader from "./Loader";
 
 const CryptoDetails = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const CryptoDetails = () => {
   }, [router.isReady, id, getCoinData]);
 
   // Loading indicator
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader/> ;
 
   // Check if data is loaded
   if (!data) return <div>No data found for ID: {id}</div>;

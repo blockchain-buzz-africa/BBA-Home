@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Loader from "./Loader";
 
 type Article = {
   _id: string;
@@ -41,13 +42,17 @@ const FeaturedDeskArticle = ({ latestArticle }: Props) => {
     >
       <div className="flex flex-col gap-3">
         <span className="text-xs">Featured</span>
-        <Image
-          src={latestArticle?.image || ""}
-          alt="Featured Article Image"
-          width={686}
-          height={386}
-          className="w-full h-auto"
-        />
+        {latestArticle?.image ? (
+           <img
+           src={latestArticle?.image}
+           alt="Featured Article Image"
+           width={686}
+           height={386}
+           className="w-full h-auto"
+         />
+        ) :
+           <Loader />
+        }
         <span className="text-xl mt-2">{latestArticle?.title}</span>
         {/* Display a content preview */}
         <div
