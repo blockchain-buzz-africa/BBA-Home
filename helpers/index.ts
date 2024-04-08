@@ -27,9 +27,34 @@ export const getSingleNews = async (_id: string) => {
   }
 };
 
+export const getDapps = async () => {
+  try {
+    const response = await axios.get("https://api.bbafrica.co/api/dappstore-info");
+    if (!response.data) {
+      throw new Error("Network response was not ok");
+    }
+    
+    // Return just the data part for simplicity in further processing
+    return response.data; 
 
-export // Helper function to extract the YouTube video ID from the URL
-const getVideoId = (url: string) => {
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSingleDapps = async (_id: string) => {
+  try {
+    const newsDapp = await getDapps(); // Assuming this now correctly returns the data part directly
+    // Since getData is adjusted to return the data part directly, 
+    // we can access the data array directly assuming the structure is { data: [...] }
+    const singleDapp = newsDapp.data.find((iDapps: any) => iDapps._id === _id);
+    return singleDapp;
+  } catch (error) {
+    throw error;
+  }
+}
+ // Helper function to extract the YouTube video ID from the URL
+export const getVideoId = (url: string) => {
   const regex = /[?&]([^=#]+)=([^&#]*)/g;
   const params: { [key: string]: string } = {};
   let match;

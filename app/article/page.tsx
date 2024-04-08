@@ -21,7 +21,7 @@ import Loader from "@/components/Loader";
 
 interface Article {
   _id: string;
-  image: string;
+  image: string; 
   name: string;
   author: string;
   title: string;

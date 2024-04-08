@@ -1,73 +1,77 @@
 "use client"
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Audio from "./../public/audio.svg";
-import axios from "axios";
-import { getVideoId } from "@/helpers";
+import React, { useEffect, useState } from 'react';
+import Banner from "@/components/Banner";
+import Header from "@/components/Header";
+import MarketRow from "@/components/MarketRow";
+import HeroSection from "@/components/HeroSection";
+import RecentArticles from "@/components/RecentArticles";
+import FeaturedArticles from "@/components/FeaturedArticles";
+import PodcastVideos from "@/components/PodcastVideos";
+import PodcastSpaces from "@/components/PodcastSpaces";
+import Footer from "@/components/Footer";
+import DeskHero from '@/components/DeskHero';
 
-type Props = {};
-
-interface Video {
+interface Article {
   _id: string;
+  image: string;
+  name: string;
+  author: string;
   title: string;
-  description: string;
-  videoUrl: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  createdAt: string; // Assuming this is also required
 }
 
-const PodcastVideos = (props: Props) => {
-  const [videos, setVideos] = useState<Video[]>([]);
+
+const Home: React.FC = () => {
+  const [news, setNews] = useState<Article[]>([]);
+  const [fnews, setFnews] = useState<Article[]>([]);
+
 
   useEffect(() => {
-    const fetchVideos = async () => {
+    const fetchNews = async () => {
       try {
-        const response = await axios.get<{ data: Video[] }>(
-          "https://api.bbafrica.co/api/videos"
-        );
-        setVideos(response.data.data);
+        const response = await fetch('https://api.bbafrica.co/api/dapps-news');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const newsData = await response.json();
+        const sortedNews = newsData.data.sort((a: Article, b: Article) => {
+          const dateA = new Date(a.createdAt);
+          const dateB = new Date(b.createdAt);
+          return dateB.getTime() - dateA.getTime();
+        });
+        console.log(sortedNews);
+
+        setNews(sortedNews.slice(0, 4));
+        setNews(sortedNews.slice(0, 2));
+        setFnews(sortedNews.slice(2))
       } catch (error) {
-        console.error("Error fetching videos:", error);
+        console.error('Error fetching news:', error);
       }
     };
 
-    fetchVideos();
-  }, [videos]);
+    fetchNews();
+  }, []);
+
 
   return (
-    <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
-      <span className="text-xl text-[#AA0099] uppercase">Podcasts: VIDEOS</span>
-      {videos.map((video) => (
-        <div key={video._id} className="w-full mt-3">
-          <div className="w-full h-[280px] relative">
-            <div className="w-full h-[280px] absolute top-0 left-0 bottom-0 right-0">
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/${getVideoId(video.videoUrl)}`}
-                frameBorder="0"
-                allowFullScreen
-                title={video.title}
-              ></iframe>
-            </div>
-            <div className="w-full h-[48px] bg-[#AA0099] flex absolute bottom-0">
-              <div className="flex flex-col w-[70%] gap-1 text-sm p-1">
-                <span className="uppercase text-white font-semibold">{video.title}</span>
-              </div>
-              <div className="p-2 flex w-[30%] justify-center items-center">
-                <Image src={Audio} alt="Audio icon" />
-              </div>
-            </div>
-          </div>
-          <div className="mt-4">
-            <p className="mt-2 text-gray-600">{video.description}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <div 
+      className="flex flex-col"
+    >
+      <Banner />
+      <Header />
+      <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+      <MarketRow />
+      <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
+      <DeskHero />
+      <HeroSection latestArticle={news[0]} />
+      <RecentArticles news={news} />
+      <FeaturedArticles fnews={fnews} />
+      {/* <PodcastVideos /> */}
+      <PodcastSpaces />
+      <Footer />
+      </div>
   );
-};
+}
 
-
-export default PodcastVideos;
+export default Home;
