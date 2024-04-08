@@ -52,4 +52,27 @@ export const getSingleDapps = async (_id: string) => {
   } catch (error) {
     throw error;
   }
+}
+ // Helper function to extract the YouTube video ID from the URL
+export const getVideoId = (url: string) => {
+  const regex = /[?&]([^=#]+)=([^&#]*)/g;
+  const params: { [key: string]: string } = {};
+  let match;
+
+  while ((match = regex.exec(url))) {
+    params[match[1]] = match[2];
+  }
+
+  if (params.v) {
+    return params.v;
+  }
+
+  const shortUrlRegex = /youtu\.be\/([^?&#]+)/;
+  const shortUrlMatch = url.match(shortUrlRegex);
+
+  if (shortUrlMatch && shortUrlMatch[1]) {
+    return shortUrlMatch[1];
+  }
+
+  return "";
 };
