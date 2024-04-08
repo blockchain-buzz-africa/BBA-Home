@@ -18,7 +18,6 @@ import moment from "moment";
 import { getData, getSingleNews } from "@/helpers";
 import RecentDeskArticles from "@/components/RecentDeskArticles";
 import Loader from "@/components/Loader";
-import { ToastContainer, toast } from 'react-toastify';
 
 interface Article {
   _id: string;
@@ -38,8 +37,9 @@ interface CopyConfirmationModalProps {
   isOpen: boolean;
 }
 
-
-const CopyConfirmationModal: React.FC<CopyConfirmationModalProps> = ({ isOpen }) => {
+const CopyConfirmationModal: React.FC<CopyConfirmationModalProps> = ({
+  isOpen,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -50,8 +50,6 @@ const CopyConfirmationModal: React.FC<CopyConfirmationModalProps> = ({ isOpen })
     </div>
   );
 };
-
-
 
 const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   const _idString = searchParams?._id as string;
@@ -120,15 +118,19 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }
 
   const copyArticleLink = () => {
-    const articleLink = `http://localhost:3000/article/${singleNews?._id || ""}`;
-    navigator.clipboard.writeText(articleLink).then(() => {
-      setIsModalOpen(true); // Open the modal on successful copy
-      setTimeout(() => setIsModalOpen(false), 2000); // Automatically close the modal after 2 seconds
-    }, () => {
-      console.error('Failed to copy link.'); // Handle the error case as needed
-    });
+    const articleLink = `https://www.bbafrica.co/article/${
+      singleNews?._id || ""
+    }`;
+    navigator.clipboard.writeText(articleLink).then(
+      () => {
+        setIsModalOpen(true); // Open the modal on successful copy
+        setTimeout(() => setIsModalOpen(false), 2000); // Automatically close the modal after 2 seconds
+      },
+      () => {
+        console.error("Failed to copy link."); // Handle the error case as needed
+      }
+    );
   };
-  
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -141,6 +143,30 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
 
     return formattedDate;
   }
+
+  const handleShare = async () => {
+    const articleUrl = `https://www.bbafrica.co/article/${
+      singleNews?._id || ""
+    }`;
+    const articleTitle = singleNews?.title || "Check out this article!";
+
+    // Check if the Web Share API is available
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: articleTitle,
+          url: articleUrl,
+        });
+        console.log("Article shared successfully!");
+      } catch (error) {
+        console.error("Error sharing the article:", error);
+      }
+    } else {
+      // Fallback for browsers that do not support the Web Share API
+      console.log("Web Share API is not supported in this browser.");
+      // Optionally, implement a fallback here, such as copying the link to the clipboard
+    }
+  };
 
   // Approximating lines by character count
   const contentPreviewLimit = 500; // Adjust based on your average character per line * 10 lines
@@ -163,14 +189,13 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
       <MarketRow />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-      <ToastContainer position="top-center" />
       {singleNews ? (
         <>
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row justify-between gap-4 "
+            className="w-full  hidden h-[692px] py-12 px-5 md:flex flex-row justify-between gap-4 "
           >
             <div className="lg:w-[63%] md:w-[58%] flex flex-col gap-1">
               <span className=" text-xs">Featured</span>
@@ -246,22 +271,21 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       ) : null}
 
       <div id="content" className="p-5">
-      <div className="flex flex-col">
-    <CopyConfirmationModal isOpen={isModalOpen} />
-    {/* The rest of your component */}
-  </div>
-        <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
+        <div className="flex flex-col">
+          <CopyConfirmationModal isOpen={isModalOpen} />
+          {/* The rest of your component */}
+        </div>
+        <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row items-center gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
           <span className="text-xs">Share Piece</span>
           <span>|</span>
-          <a>
-            {" "}
+          <button onClick={handleShare} aria-label="Share article">
             <Image src={Share} alt="share" />
-          </a>
+          </button>
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               singleNews?.title || ""
             )}&url=${encodeURIComponent(
-              `http://localhost:3000/article/${singleNews?._id || ""}`
+              `https://www.bbafrica.co/article/${singleNews?._id || ""}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
