@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Banner from "@/components/Banner";
@@ -19,6 +18,7 @@ import moment from "moment";
 import { getData, getSingleNews } from "@/helpers";
 import RecentDeskArticles from "@/components/RecentDeskArticles";
 import Loader from "@/components/Loader";
+import { ToastContainer, toast } from 'react-toastify';
 
 interface Article {
   _id: string;
@@ -34,11 +34,31 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+interface CopyConfirmationModalProps {
+  isOpen: boolean;
+}
+
+
+const CopyConfirmationModal: React.FC<CopyConfirmationModalProps> = ({ isOpen }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div className="bg-white dark:bg-[#484646] p-4 rounded-md">
+        <p className="text-black dark:text-white">Link copied to clipboard!</p>
+      </div>
+    </div>
+  );
+};
+
+
+
 const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   const _idString = searchParams?._id as string;
 
   const [singleNews, setSingleNews] = useState<Article | null>(null); //single item
   const [anews, setAnews] = useState<Article[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -92,12 +112,23 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }, [singleNews]);
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const copyArticleLink = () => {
+    const articleLink = `http://localhost:3000/article/${singleNews?._id || ""}`;
+    navigator.clipboard.writeText(articleLink).then(() => {
+      setIsModalOpen(true); // Open the modal on successful copy
+      setTimeout(() => setIsModalOpen(false), 2000); // Automatically close the modal after 2 seconds
+    }, () => {
+      console.error('Failed to copy link.'); // Handle the error case as needed
+    });
+  };
+  
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -132,7 +163,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
       <MarketRow />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
-
+      <ToastContainer position="top-center" />
       {singleNews ? (
         <>
           <motion.div
@@ -141,9 +172,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
             variants={containerVariants}
             className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row justify-between gap-4 "
           >
-            <div
-              className="lg:w-[63%] md:w-[58%] flex flex-col gap-1"
-            >
+            <div className="lg:w-[63%] md:w-[58%] flex flex-col gap-1">
               <span className=" text-xs">Featured</span>
               <Image
                 src={singleNews.image}
@@ -157,7 +186,9 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
                 className="text-sm text-[#6A6A6A] dark:text-[#b2aeae]"
                 dangerouslySetInnerHTML={{ __html: contentPreview || "" }}
               />
-              <a href="#content" className="text-[#AA0099] text-xs mt-2">Read more</a>
+              <a href="#content" className="text-[#AA0099] text-xs mt-2">
+                Read more
+              </a>
 
               <div className="text-xs flex-row gap-4 text-[#6A6A6A] dark:text-[#b2aeae]">
                 <span className="uppercase">
@@ -215,12 +246,32 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       ) : null}
 
       <div id="content" className="p-5">
+      <div className="flex flex-col">
+    <CopyConfirmationModal isOpen={isModalOpen} />
+    {/* The rest of your component */}
+  </div>
         <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
           <span className="text-xs">Share Piece</span>
           <span>|</span>
-          <Image src={Share} alt="share" />
-          <Image src={Twitter} alt="twitter" />
-          <Image src={Chain} alt="chain" />
+          <a>
+            {" "}
+            <Image src={Share} alt="share" />
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              singleNews?.title || ""
+            )}&url=${encodeURIComponent(
+              `http://localhost:3000/article/${singleNews?._id || ""}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={Twitter} alt="twitter" />
+          </a>
+
+          <button onClick={copyArticleLink} aria-label="Copy link to clipboard">
+            <Image src={Chain} alt="chain" />
+          </button>
         </div>
 
         <motion.article
