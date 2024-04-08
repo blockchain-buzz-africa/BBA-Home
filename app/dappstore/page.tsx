@@ -27,7 +27,7 @@ interface Dapp {
   createdAt: string; // Assuming this is also required
 }
 
-const page = () => {
+const Page = () => {
 
   const [news, setNews] = useState<Dapp[]>([]);
   const [fnews, setFnews] = useState<Dapp[]>([]);
@@ -45,7 +45,6 @@ const page = () => {
           const dateB = new Date(b.createdAt);
           return dateB.getTime() - dateA.getTime();
         });
-        console.log(sortedNews);
 
         setNews(sortedNews.slice(0, 4));
         setNews(sortedNews.slice(0, 2));
@@ -56,7 +55,7 @@ const page = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [fnews, news]);
 
   
   return (
@@ -651,4 +650,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

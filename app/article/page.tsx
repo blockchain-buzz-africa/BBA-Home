@@ -89,11 +89,9 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
       try {
         if (_idString) {
           const fetchedNews = await getSingleNews(_idString);
-          console.log("fetchedNews", fetchedNews);
 
           setSingleNews(fetchedNews);
 
-          console.log("Single news", singleNews);
         }
       } catch (err) {
         setError("Failed to fetch news");
@@ -103,10 +101,9 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
     };
 
     fetchNews();
-  }, [_idString]);
+  }, [_idString, singleNews]);
 
   useEffect(() => {
-    console.log("Single news", singleNews);
   }, [singleNews]);
 
   if (isLoading) {

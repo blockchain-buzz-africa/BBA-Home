@@ -6,7 +6,6 @@ import ScrollUp from "@/components/ScrollUp";
 import { CryptoProvider } from "@/context/CryptoContext";
 import { TrendingProvider } from "@/context/TrendingContext";
 import { StorageProvider } from "@/context/StorageContext";
-import ToasterProvider from "./providers/ToastProvider";
 
 const tienne = Tienne({
   subsets: ["latin"],
@@ -25,7 +24,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ToasterProvider />
       <CryptoProvider>
         <TrendingProvider>
           <StorageProvider>
