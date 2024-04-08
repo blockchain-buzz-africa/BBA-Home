@@ -6,8 +6,10 @@ export const getData = async () => {
     if (!response.data) {
       throw new Error("Network response was not ok");
     }
+    
     // Return just the data part for simplicity in further processing
     return response.data; 
+
   } catch (error) {
     throw error;
   }

@@ -26,6 +26,7 @@ const Home: React.FC = () => {
   const [news, setNews] = useState<Article[]>([]);
   const [fnews, setFnews] = useState<Article[]>([]);
 
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -40,8 +41,10 @@ const Home: React.FC = () => {
           return dateB.getTime() - dateA.getTime();
         });
         console.log(sortedNews);
+
+        setNews(sortedNews.slice(0, 4));
         setNews(sortedNews.slice(0, 2));
-        setFnews(sortedNews.slice(2,10))
+        setFnews(sortedNews.slice(2))
       } catch (error) {
         console.error('Error fetching news:', error);
       }
@@ -64,7 +67,7 @@ const Home: React.FC = () => {
       <HeroSection latestArticle={news[0]} />
       <RecentArticles news={news} />
       <FeaturedArticles fnews={fnews} />
-      <PodcastVideos />
+      {/* <PodcastVideos /> */}
       <PodcastSpaces />
       <Footer />
       </div>

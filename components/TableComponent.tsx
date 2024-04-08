@@ -53,7 +53,7 @@ const TableComponent = () => {
                         />
                         <span>
                           <Link
-                            href={`/markets/${data.id}`}
+                            href={"/markets"}
                             className="cursor-pointer hover:text-[#AA0099] transition-colors"
                           >
                             {data.symbol}
@@ -63,7 +63,7 @@ const TableComponent = () => {
                     </td>
                     <td className="py-4 px-6">
                       <Link
-                        href={`/markets/${data.id}`}
+                        href={"/markets"}
                         className="cursor-pointer hover:text-cyan transition-colors"
                       >
                         {data.name}

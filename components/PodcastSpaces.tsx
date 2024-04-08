@@ -46,24 +46,26 @@ const PodcastSpaces: React.FC = () => {
 
   return (
     <div className="p-5 md:hidden lg:hidden flex flex-col gap-3">
-      {/* <span className="text-base md:text-xl text-[#AA0099] uppercase">
+      <span className="text-base md:text-xl text-[#AA0099] uppercase">
         Podcasts: SPACES
-      </span> */}
+      </span>
 
       {audioData.map((audio) => (
         <div
           key={audio._id}
-          className="relative mt-3 w-full h-[48px] bg-[#21262D] dark:bg-[#363b43] flex flex-row"
+          className="px-4 mt-3 w-full h-[144px] bg-[#21262D] dark:bg-[#363b43] flex flex-row"
         >
-          <div className="flex flex-col w-[40%] gap-[2px] p-1 justify-center">
+          <div className=" w-full flex flex-col gap-[10px] p-1 justify-center">
             <span className="uppercase text-xs md:text-base text-white font-semibold">
               {audio.title}
             </span>
-            <span className="text-white text-xs">{audio.description}</span>
-          </div>
-          <div className="h-[30%] absolute top-2 right-2 flex w-[65%] justify-center items-center">
+            <span className="text-white text-xs mb-2">{audio.description}</span>
+
+            <div className="w-full h-[30%] flex items-center">
             <audio src={audio.audioFile} controls />
           </div>
+          </div>
+          
         </div>
       ))}
     </div>

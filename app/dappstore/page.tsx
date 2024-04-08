@@ -1,3 +1,5 @@
+"use client"
+
 import Banner from "@/components/Banner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -7,12 +9,54 @@ import Womans from "./../../public/womans.png";
 import Ad from "./../../public/ad.svg";
 import Filter from "./../../public/filter.svg";
 import Halofi from "./../../public/halofi.jpeg";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-type Props = {};
+interface Dapp {
+  _id: string;
+  name: string;
+  description: string;
+  about: string;
+  website: string;
+  twitter: string;
+  telegram: string;
+  tags: string;
+  chain: string;
+  image: string;  
+  category: string;
+  createdAt: string; // Assuming this is also required
+}
 
-const page = (props: Props) => {
+const Page = () => {
+
+  const [news, setNews] = useState<Dapp[]>([]);
+  const [fnews, setFnews] = useState<Dapp[]>([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch('https://api.bbafrica.co/api/dappstore-info');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const newsData = await response.json();
+        const sortedNews = newsData.data.sort((a: Dapp, b: Dapp) => {
+          const dateA = new Date(a.createdAt);
+          const dateB = new Date(b.createdAt);
+          return dateB.getTime() - dateA.getTime();
+        });
+
+        setNews(sortedNews.slice(0, 4));
+        setNews(sortedNews.slice(0, 2));
+        setFnews(sortedNews.slice(2))
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      }
+    };
+
+    fetchNews();
+  }, [fnews, news]);
+
   
   return (
     <>
@@ -606,4 +650,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page;
+export default Page;
