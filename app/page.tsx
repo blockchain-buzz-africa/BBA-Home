@@ -25,7 +25,6 @@ interface Article {
 const Home: React.FC = () => {
   const [news, setNews] = useState<Article[]>([]);
   const [fnews, setFnews] = useState<Article[]>([]);
-  const [anews, setAnews] = useState<Article[]>([]);
 
 
   useEffect(() => {

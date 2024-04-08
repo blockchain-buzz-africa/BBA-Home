@@ -118,7 +118,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }
 
   const copyArticleLink = () => {
-    const articleLink = `https://www.bbafrica.co/article/${
+    const articleLink = `https://www.bbafrica.co/article?_id=${
       singleNews?._id || ""
     }`;
     navigator.clipboard.writeText(articleLink).then(
@@ -145,7 +145,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }
 
   const handleShare = async () => {
-    const articleUrl = `https://www.bbafrica.co/article/${
+    const articleUrl = `https://www.bbafrica.co/article?_id=${
       singleNews?._id || ""
     }`;
     const articleTitle = singleNews?.title || "Check out this article!";
@@ -285,7 +285,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               singleNews?.title || ""
             )}&url=${encodeURIComponent(
-              `https://www.bbafrica.co/article/${singleNews?._id || ""}`
+              `https://www.bbafrica.co/article?_id=${singleNews?._id || ""}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
