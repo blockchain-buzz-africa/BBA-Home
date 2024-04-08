@@ -134,11 +134,12 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="py-5 lg:pr-80 prose-sm md:prose-lg 
+          className="py-5 lg:pr-80 
   dark:text-white text-black mt-10 mb-10 flex flex-col"
         >
           <div
-            className="prose text-black dark:text-white"
+            className="
+            dark:text-white text-black"
             dangerouslySetInnerHTML={{ __html: singleNews?.content || "" }}
           />
         </motion.article>

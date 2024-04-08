@@ -24,6 +24,7 @@ interface Article {
 
 const Home: React.FC = () => {
   const [news, setNews] = useState<Article[]>([]);
+  const [fnews, setFnews] = useState<Article[]>([]);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -39,7 +40,8 @@ const Home: React.FC = () => {
           return dateB.getTime() - dateA.getTime();
         });
         console.log(sortedNews);
-        setNews(sortedNews.slice(0, 3));
+        setNews(sortedNews.slice(0, 2));
+        setFnews(sortedNews.slice(2,10))
       } catch (error) {
         console.error('Error fetching news:', error);
       }
@@ -52,7 +54,6 @@ const Home: React.FC = () => {
   return (
     <div 
       className="flex flex-col"
-     
     >
       <Banner />
       <Header />
@@ -60,9 +61,9 @@ const Home: React.FC = () => {
       <MarketRow />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
       <DeskHero />
-      <HeroSection />
+      <HeroSection latestArticle={news[0]} />
       <RecentArticles news={news} />
-      <FeaturedArticles />
+      <FeaturedArticles fnews={fnews} />
       <PodcastVideos />
       <PodcastSpaces />
       <Footer />
