@@ -28,7 +28,7 @@ const FeaturedArticles: React.FC<Props> = ({ fnews }) => {
         Featured Articles
       </span>
       {fnews && fnews.map((item: Article) => (
-        <Link href={{ pathname: "/article", query: {_id: item?._id } }} className="p-5 flex flex-col gap-3">
+        <Link key={item?._id} href={{ pathname: "/article", query: {_id: item?._id } }} className="p-5 flex flex-col gap-3">
           <motion.div
             initial="hidden"
             animate="visible"
