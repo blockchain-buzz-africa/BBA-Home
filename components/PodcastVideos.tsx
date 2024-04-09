@@ -103,7 +103,7 @@ const PodcastVideos: React.FC = () => {
           <button
             
             onClick={handleMoreClick}
-            className="underline"
+            className="font-bold"
           >
             ...
           </button>

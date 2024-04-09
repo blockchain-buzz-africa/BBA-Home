@@ -53,7 +53,7 @@ const FeaturedDeskArticle = ({ latestArticle }: Props) => {
         ) :
            <Loader />
         }
-        <span className="text-xl mt-2">{latestArticle?.title}</span>
+        <span className="text-xl">{latestArticle?.title}</span>
         {/* Display a content preview */}
         <div
           className="text-sm text-[#6A6A6A] dark:text-[#b2aeae]"
