@@ -6,6 +6,8 @@ import Header from "@/components/Header";
 import Loader from "@/components/Loader";
 import Share from "./../../../public/share.svg";
 import Twitter from "./../../../public/twitter.svg";
+import Website from "./../../../public/world.svg";
+import Telegram from "./../../../public/tgram.svg";
 import moment from "moment";
 import MarketRow from "@/components/MarketRow";
 import { getSingleDapps } from "@/helpers";
@@ -175,28 +177,27 @@ const DappPage: React.FC<Props> = ({ searchParams }) => {
             </motion.div>
           </div>
         </React.Fragment>
-      ) : null}
+      ) : null} 
 
       <div id="content" className="p-5">
-        <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row items-center gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
-          <span className="text-xs">Share Piece</span>
+        <div className="w-full md:w-[70%]  flex flex-row items-center gap-6 h-[50px]  border-t border-b dark:border-[#A5A5A5] border-[#818181]">
+          <span className="text-xs">Dapp Links</span>
           <span>|</span>
+          
+          <a href={singleDapp?.website}>
+          <Image src={Website} alt="website" />
+          </a>
+
+          <a href={singleDapp?.telegram}>
+          <Image src={Telegram} alt="telegram" />
+          </a>
+          <a href={singleDapp?.twitter}>
+            <Image src={Twitter} alt="twitter" />
+          </a>
+
           <button onClick={handleShare} aria-label="Share article">
             <Image src={Share} alt="share" />
           </button>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-              singleDapp?.about || ""
-            )}&url=${encodeURIComponent(
-              `https://www.bbafrica.co/dappstore/dapp?_id=${
-                singleDapp?._id || ""
-              }`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src={Twitter} alt="twitter" />
-          </a>
         </div>
 
         <motion.article

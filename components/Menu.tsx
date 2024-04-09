@@ -123,9 +123,27 @@ const Menu = (props: Props) => {
               <span>About BBA</span>
             </div>
             <div className="flex flex-row gap-8 justify-center items-center">
-              <Image src={Telegram} alt="telegram" />
+
+              <Link
+                href={"https://t.me/+P6X0i80H-N0xNTdk"}
+                target="_blank"
+              >
               <Image src={Whatsapp} alt="whatsapp" />
-              <Image src={Xtwitter} alt="twitter" />
+              </Link>
+
+              <Link
+                href={"https://t.me/+P6X0i80H-N0xNTdk"}
+                target="_blank"
+              >
+                <Image src={Telegram} alt="telegram" />{" "}
+              </Link>
+
+              <Link
+                href={"https://x.com/bba_Africa?t=VEYwEAj_0bFBlKc1sEYR2Q&s=09"}
+                target="_blank"
+              >
+                <Image src={Xtwitter} alt="twitter" />
+              </Link>
             </div>
 
             <div className="w-full h-12 rounded-xl flex justify-between items-center dark:bg-[#313843] bg-[#E5E7EB] p-3">
