@@ -1,11 +1,10 @@
-"use client"
-
-import { useRef, useState } from "react";
-import useSWR from 'swr';
+"use client";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import useSWR from "swr";
 import Image from "next/image";
 import Audio from "../public/audio.svg";
 import { getVideoId } from "@/helpers";
-import axios from "axios";
 import Loader from "./Loader";
 
 interface Video {
@@ -17,62 +16,129 @@ interface Video {
   updatedAt: string;
 }
 
-// Adjust the fetcher function to match the expected return type for SWR
-const fetcher = (url: string) => axios.get<{ data: Video[] }>(url).then(res => res.data.data);
+const fetcher = (url: string) =>
+  axios.get<{ data: Video[] }>(url).then((res) => res.data.data);
 
-const PodcastVideos = () => {
-  const modalContentRef = useRef<HTMLDivElement>(null); 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface VideoModalProps {
+  video: Video;
+  onClose: () => void;
+}
+
+const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
+  // Adding a state to control the animation
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger the animation shortly after the component mounts
+    const timer = setTimeout(() => setIsVisible(true), 10); // A short delay ensures the transition will happen
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-end"
+      onClick={onClose}
+    >
+      <div
+        className={`w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-[#AA0099] rounded-t-3xl flex flex-col gap-3  text-white p-5 transition-transform duration-300 transform ${
+          isVisible ? "translate-y-0" : "translate-y-full"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+        style={{ transition: "transform 0.5s ease-out" }} // Smoothly animate the transform property
+      >
+        <h2 className="text-lg font-bold">{video.title}</h2>
+        <p>{video.description}</p>
+        <button onClick={onClose} className="text-[#374151] font-semibold text-2xl">Close</button>
+      </div>
+    </div>
+  );
+};
+
+const PodcastVideos: React.FC = () => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
-  // Adjust the useSWR call to expect an array of Video objects directly
-  const { data: videos, error } = useSWR<Video[]>('https://api.bbafrica.co/api/videos', fetcher);
+  const { data: videos, error } = useSWR<Video[]>(
+    "https://api.bbafrica.co/api/videos",
+    fetcher
+  );
 
-   // Function to handle opening the modal
-   const handleOpenModal = (video: Video) => {
+  useEffect(() => {
+    const closeModal = (e: MouseEvent) => {
+      if (!modalRef.current?.contains(e.target as Node)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    const toggleBodyScroll = (shouldDisableScroll: boolean) => {
+      document.body.style.overflow = shouldDisableScroll ? "hidden" : "auto";
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("mousedown", closeModal);
+      toggleBodyScroll(true);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", closeModal);
+      toggleBodyScroll(false);
+    };
+  }, [isModalOpen]);
+
+  const handleOpenModal = (video: Video) => {
     setSelectedVideo(video);
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = (e: React.MouseEvent) => {
-    // If the modal content does not contain the click target, close the modal
-    if (!modalContentRef.current?.contains(e.target as Node)) {
-      setIsModalOpen(false);
-    }
-  };
-
   if (error) return <div>Failed to load videos.</div>;
-  if (!videos) return <Loader />
+  if (!videos) return <Loader />;
 
-  // Modal Component
-  const VideoModal = () => (
-    <div className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center items-end ${isModalOpen ? "" : "hidden"}`}>
-      <div className="w-full bg-[#AA0099] text-white p-5 transition-transform duration-300 transform">
-        <h2 className="text-lg font-bold">{selectedVideo?.title}</h2>
-        <p>{selectedVideo?.description}</p>
-        <button onClick={() => setIsModalOpen(false)}>Close</button>
-      </div>
-    </div>
-  );
+  const truncateDescription = (description: string, handleMoreClick: () => void) => {
+    const words = description.split(" ");
+    if (words.length > 5) {
+      const truncated = words.slice(0, 5).join(" ");
+      return (
+        <span className="text-white text-xs">
+          {truncated}{" "}
+          <button
+            
+            onClick={handleMoreClick}
+            className="underline"
+          >
+            ...
+          </button>
+        </span>
+      );
+    }
+    return description;
+  };
 
   return (
     <div className="p-5 flex flex-col gap-5">
       <span className="text-xl text-[#AA0099] uppercase">Podcasts: VIDEOS</span>
-      {videos.map((video: Video) => (
+      {videos.map((video) => (
         <div key={video._id} className="w-full mt-3">
-          <div className="w-full h-[240px] flex flex-col mb-5">
+          <div
+            className="w-full h-[240px] flex flex-col mb-5"
+            onClick={() => handleOpenModal(video)}
+          >
             <iframe
               className="w-full h-[80%]"
-              src={`https://www.youtube.com/embed/${getVideoId(video.videoUrl)}`}
+              src={`https://www.youtube.com/embed/${getVideoId(
+                video.videoUrl
+              )}`}
               frameBorder="0"
               allowFullScreen
               title={video.title}
             ></iframe>
-            <div className="w-full h-[20%] bg-[#AA0099] flex " onClick={() => handleOpenModal(video)}>
+            <div className="w-full h-[20%] bg-[#AA0099] flex ">
               <div className="flex flex-col w-[70%] gap-1 text-sm p-1">
                 <span className="uppercase text-white font-semibold text-xs">
                 Automation in defi: part 1
                 </span>
-                <span className="text-white text-xs">Twitter space episode 5</span>
+                {truncateDescription(video.description, () =>
+                  handleOpenModal(video)
+                )}{" "}
               </div>
               <div className="p-2 flex w-[30%] justify-center items-center">
                 <Image src={Audio} alt="Audio icon" width={24} height={24} />
@@ -81,7 +147,12 @@ const PodcastVideos = () => {
           </div>
         </div>
       ))}
-       {isModalOpen && <VideoModal />}
+      {isModalOpen && selectedVideo && (
+        <VideoModal
+          video={selectedVideo}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 };
