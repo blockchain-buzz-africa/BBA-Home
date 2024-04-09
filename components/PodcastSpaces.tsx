@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 import Audio from "./../public/audio.svg";
 import Image from "next/image";
@@ -53,7 +55,7 @@ const PodcastSpaces: React.FC = () => {
       {audioData.map((audio) => (
         <div
           key={audio._id}
-          className="px-4 mt-3 w-full h-[144px] bg-[#21262D] dark:bg-[#363b43] flex flex-row"
+          className="px-4 mt-3 w-full h-[164px] bg-[#21262D] dark:bg-[#363b43] flex flex-row"
         >
           <div className=" w-full flex flex-col gap-[10px] p-1 justify-center">
             <span className="uppercase text-xs md:text-base text-white font-semibold">
