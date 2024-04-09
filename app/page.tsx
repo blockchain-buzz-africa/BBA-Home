@@ -67,7 +67,7 @@ const Home: React.FC = () => {
       <HeroSection latestArticle={news[0]} />
       <RecentArticles news={news} />
       <FeaturedArticles fnews={fnews} />
-      {/* <PodcastVideos /> */}
+      <PodcastVideos />
       <PodcastSpaces />
       <Footer />
       </div>
