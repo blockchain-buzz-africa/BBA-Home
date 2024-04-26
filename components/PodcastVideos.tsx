@@ -40,7 +40,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
       onClick={onClose}
     >
       <div
-        className={`w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-[#AA0099] rounded-t-3xl flex flex-col gap-3  text-white p-5 transition-transform duration-300 transform ${
+        className={`w-360 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-[#AA0099] rounded-t-3xl flex flex-col gap-3  text-white p-5 transition-transform duration-300 transform ${
           isVisible ? "translate-y-0" : "translate-y-full"
         }`}
         onClick={(e) => e.stopPropagation()}

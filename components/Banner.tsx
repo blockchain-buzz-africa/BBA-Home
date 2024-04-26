@@ -45,13 +45,13 @@ const Banner: React.FC<Props> = (props) => {
 
     <div className="w-full md:hidden flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white text-xs">
-        Codeafrica Conference 24`&apos;`: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} <br /> minutes {timeLeft.seconds} seconds remaining
+        Codeafrica Conference 24: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} <br /> minutes {timeLeft.seconds} seconds remaining
       </p>
     </div>
 
     <div className="w-full hidden md:flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white">
-      Codeafrica Conference 24`&apos;`: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
+      Codeafrica Conference 24: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
       </p>
     </div>
 
