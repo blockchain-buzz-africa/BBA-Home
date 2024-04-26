@@ -1,12 +1,13 @@
 "use client"
 
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 type Props = {};
 
 const Banner: React.FC<Props> = (props) => {
   const calculateTimeLeft = () => {
-    const difference = +new Date('04/19/2024') - +new Date();
+    const difference = +new Date('05/10/2024') - +new Date();
     let timeLeft = {
       days: 0,
       hours: 0,
@@ -40,17 +41,22 @@ const Banner: React.FC<Props> = (props) => {
 
   return (
     <>
-       <div className="w-full md:hidden flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
+    <Link href={'https://www.codeafrica.xyz/'}>
+
+    <div className="w-full md:hidden flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white text-xs">
-        Bitcoin Halving April 19: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} <br /> minutes {timeLeft.seconds} seconds remaining
+        Codeafrica Conference 24`&apos;`: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} <br /> minutes {timeLeft.seconds} seconds remaining
       </p>
     </div>
 
     <div className="w-full hidden md:flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white">
-        Bitcoin Halving April 19: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
+      Codeafrica Conference 24`&apos;`: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
       </p>
     </div>
+
+    </Link>
+    
     </>
  
   );
