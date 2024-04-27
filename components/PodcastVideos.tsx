@@ -124,7 +124,7 @@ const PodcastVideos: React.FC = () => {
             onClick={() => handleOpenModal(video)}
           >
             <iframe
-              className="w-full h-[80%]"
+              className="w-full h-[60%]"
               src={`https://www.youtube.com/embed/${getVideoId(
                 video.videoUrl
               )}`}
@@ -132,7 +132,7 @@ const PodcastVideos: React.FC = () => {
               allowFullScreen
               title={video.title}
             ></iframe>
-            <div className="w-full h-[30%] bg-[#AA0099] flex ">
+            <div className="w-full h-[25%] bg-[#AA0099] flex ">
               <div className="flex flex-col w-[70%] gap-1 text-sm p-1">
                 <span className="uppercase text-white font-semibold text-2xl">
                 Automation in defi: part 1
