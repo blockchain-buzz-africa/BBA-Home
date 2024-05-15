@@ -114,7 +114,7 @@ const PodcastVideos: React.FC = () => {
   };
 
   return (
-    <div className="p-5 flex flex-col gap-5">
+    <div className="p-5 flex flex-col md:hidden gap-5">
       <span className="text-xl text-[#AA0099] uppercase">Podcasts: VIDEOS</span>
       {videos.map((video) => (
         <div key={video._id} className="w-full mt-3">

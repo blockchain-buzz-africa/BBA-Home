@@ -67,7 +67,7 @@ const AudioModal: React.FC<AudioModalProps> = ({ audio, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black bg-opacity-75 flex justify-center items-end"
+      className="fixed md:hidden inset-0 z-50 bg-black bg-opacity-75 flex justify-center items-end"
       onClick={onClose}
     >
       <div
