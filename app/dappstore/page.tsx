@@ -81,9 +81,11 @@ const Dapp = () => {
           Submit your dapp to BBA for visibility. Send email to us below.{" "}
         </p>
 
-        <button className="w-[30%] h-[34px] bg-[#163159] text-xs uppercase  flex justify-center items-center p-2">
-          SEND EMAIL
+        <Link href={"https://forms.gle/TwQxDVZgch9yeqtq7"}>
+        <button className="w-[300] h-[34px] bg-[#163159] text-xs uppercase  flex justify-center items-center p-2">
+          SUBMIT
         </button>
+        </Link>
       </div>
       <div className="w-full h-[1px] bg-transparent"></div>
       <Footer />

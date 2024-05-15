@@ -57,7 +57,7 @@ const HeroSection = ({ latestArticle }: Props) => {
         </span>
         <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
           <p>{formattedDate}</p>
-          {latestArticle?.author?  <p>Author: {latestArticle?.author}</p> : null}
+          {latestArticle?.author?  <p>By: {latestArticle?.author}</p> : null}
          
         </div>
       </motion.div>
