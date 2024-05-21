@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
-import Audio from "../public/audio.svg";
+import play from "@/public/play.png"
 import { getVideoId } from "@/helpers";
 import Loader from "./Loader";
 
@@ -36,21 +36,22 @@ const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-end"
-      onClick={onClose}
+    className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-end"
+    onClick={onClose}
+  >
+    <div
+      className={`max-w-lg w-full bg-[#AA0099] rounded-t-3xl flex flex-col gap-3 text-white p-5 transition-transform duration-300 transform ${
+        isVisible ? "translate-y-0" : "translate-y-full"
+      }`}
+      onClick={(e) => e.stopPropagation()}
+      style={{ transition: "transform 0.5s ease-out" }} // Smoothly animate the transform property
     >
-      <div
-        className={`w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-[#AA0099] rounded-t-3xl flex flex-col gap-3  text-white p-5 transition-transform duration-300 transform ${
-          isVisible ? "translate-y-0" : "translate-y-full"
-        }`}
-        onClick={(e) => e.stopPropagation()}
-        style={{ transition: "transform 0.5s ease-out" }} // Smoothly animate the transform property
-      >
-        <h2 className="text-lg font-bold">{video.title}</h2>
-        <p>{video.description}</p>
-        <button onClick={onClose} className="text-[#374151] font-semibold text-2xl">Close</button>
-      </div>
+      <h2 className="text-lg font-bold">{video.title}</h2>
+      <p>{video.description}</p>
+      <button onClick={onClose} className="text-[#374151] font-semibold text-2xl">Close</button>
     </div>
+  </div>
+  
   );
 };
 
@@ -96,9 +97,9 @@ const PodcastVideos: React.FC = () => {
   const truncateDescription = (description: string, handleMoreClick: () => void) => {
     const words = description.split(" ");
     if (words.length > 5) {
-      const truncated = words.slice(0, 5).join(" ");
+      const truncated = words.slice(0, 20).join(" ");
       return (
-        <span className="text-white text-xs">
+        <span className="text-white text-40 font-light">
           {truncated}{" "}
           <button
             
@@ -119,11 +120,13 @@ const PodcastVideos: React.FC = () => {
       {videos.map((video) => (
         <div key={video._id} className="w-full md:flex md:justify-center mt-3">
           <div
+
             className="w-full md:w-3/4 h-[260px] md:h-[400px] flex flex-col mb-5"
+
             onClick={() => handleOpenModal(video)}
           >
             <iframe
-              className="w-full h-[80%]"
+              className="w-full h-[60%]"
               src={`https://www.youtube.com/embed/${getVideoId(
                 video.videoUrl
               )}`}
@@ -131,9 +134,11 @@ const PodcastVideos: React.FC = () => {
               allowFullScreen
               title={video.title}
             ></iframe>
+
             <div className="w-full h-[24%] bg-[#AA0099] flex items-center ">
+
               <div className="flex flex-col w-[70%] gap-1 text-sm p-1">
-                <span className="uppercase text-white font-semibold text-xs">
+                <span className="uppercase text-white font-semibold text-2xl">
                 Automation in defi: part 1
                 </span>
                 {truncateDescription(video.description, () =>
@@ -141,7 +146,7 @@ const PodcastVideos: React.FC = () => {
                 )}{" "}
               </div>
               <div className="p-2 flex w-[30%] justify-center items-center">
-                <Image src={Audio} alt="Audio icon" width={24} height={24} />
+                <Image src={play} alt="Audio icon" width={38} height={36} />
               </div>
             </div>
           </div>
