@@ -272,7 +272,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           <CopyConfirmationModal isOpen={isModalOpen} />
           {/* The rest of your component */}
         </div>
-        <div className=" p-3 w-[95%] md:w-[70%]  flex flex-row items-center gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
+        <div className=" p-3 w-[85%] md:w-[70%]  flex flex-row items-center gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
           <span className="text-xs">Share Piece</span>
           <span>|</span>
           <button onClick={handleShare} aria-label="Share article">

@@ -125,7 +125,7 @@ const Menu = (props: Props) => {
             <div className="flex flex-row gap-8 justify-center items-center">
 
               <Link
-                href={"https://t.me/+P6X0i80H-N0xNTdk"}
+                href={"https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u"}
                 target="_blank"
               >
               <Image src={Whatsapp} alt="whatsapp" />

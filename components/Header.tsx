@@ -20,11 +20,11 @@ const Header = (props: Props) => {
  
         <div className=" hidden lg:flex gap-x-4 ">
         <Link href={'/'} className="text-xs  text-[#110B29] dark:text-gray-400">
-          NEWS
+          MEDIA
         </Link>
 
         <Link href={'/markets'} className="text-xs  text-[#110B29] dark:text-gray-400">
-          MARKET
+          MARKETS
         </Link>
 
         <Link href={'/dappstore'} className="text-xs text-[#110B29] dark:text-gray-400">

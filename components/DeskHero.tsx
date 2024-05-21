@@ -73,11 +73,11 @@ const DeskHero = () => {
             Will the bull run spur jobs in the web3 market?
           </span>
           <p className="text-sm text-[#6A6A6A] dark:text-[#b2aeae] ">
-            Chainlink is a clear leader in the oracle market and adjoining
-            verticals, but apart from its price data solutions, demand has been
-            lackluster. To overcome this, the project is making changes to its
-            operational model, together with betting on material adoption by
-            financial institutions.
+          The web3 job market is poised to become a fertile hunting ground, 
+          where pioneers and visionaries will stake their claim in shaping 
+          the decentralized future. From blockchain developers crafting the 
+          backbone of this new frontier to NFT artists breathing life into 
+          digital canvases, the hunt for talent is on.
           </p>
           <p className="text-xs text-[#6A6A6A] dark:text-[#b2aeae] ">
             by <span className="text-[#AA0099]">web3 recruiter</span>/ 5 DAYS

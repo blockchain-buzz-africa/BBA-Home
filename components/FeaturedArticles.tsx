@@ -28,14 +28,14 @@ const FeaturedArticles: React.FC<Props> = ({ fnews }) => {
         Featured Articles
       </span>
       {fnews && fnews.map((item: Article) => (
-        <Link key={item?._id} href={{ pathname: "/article", query: {_id: item?._id } }} className="px-5 flex flex-col gap-3">
+        <Link key={item?._id} href={{ pathname: "/article", query: {_id: item?._id } }} className="px-5 flex flex-col ">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="w-full h-[280px]"
+            className="w-full h-full"
           >
-            <Image src={item.image} width={450} height={150} alt="article image" objectFit="contain" />
+            <Image src={item.image} width={450} height={150} alt="article image" objectFit="cover" />
           </motion.div>
           <motion.div
             initial="hidden"
@@ -52,7 +52,7 @@ const FeaturedArticles: React.FC<Props> = ({ fnews }) => {
                 month: 'long',
                 day: 'numeric',
               })}</p>
-              <p>Author: {item.author}</p>
+              <p>By: {item.author}</p>
             </div>
           </motion.div>
         </Link>
