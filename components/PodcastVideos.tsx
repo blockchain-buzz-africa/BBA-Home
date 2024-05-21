@@ -119,7 +119,7 @@ const PodcastVideos: React.FC = () => {
       {videos.map((video) => (
         <div key={video._id} className="w-full md:flex md:justify-center mt-3">
           <div
-            className="w-full md:w-3/4 h-[260px] md:h-[400px] flex flex-col mb-5"
+            className="w-full md:w-3/4 h-[260px] md:h-[500px] flex flex-col mb-5"
             onClick={() => handleOpenModal(video)}
           >
             <iframe
@@ -131,7 +131,7 @@ const PodcastVideos: React.FC = () => {
               allowFullScreen
               title={video.title}
             ></iframe>
-            <div className="w-full h-[24%] bg-[#AA0099] flex items-center ">
+            <div className="w-full h-[24%] md:h-[16%] bg-[#AA0099] flex items-center ">
               <div className="flex flex-col w-[70%] gap-1 text-sm p-1">
                 <span className="uppercase text-white font-semibold text-xs">
                 Automation in defi: part 1
