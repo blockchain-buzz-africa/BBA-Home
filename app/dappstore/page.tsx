@@ -64,7 +64,7 @@ const Dapp = () => {
   
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <Header />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
       <MarketRow />
