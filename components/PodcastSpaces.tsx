@@ -67,7 +67,7 @@ const AudioModal: React.FC<AudioModalProps> = ({ audio, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black bg-opacity-75 flex justify-center items-end"
+      className="fixed md:hidden inset-0 z-50 bg-black bg-opacity-75 flex justify-center items-end"
       onClick={onClose}
     >
       <div
@@ -158,19 +158,19 @@ const PodcastSpaces: React.FC = () => {
 
   return (
     <div className="p-5 flex flex-col gap-3">
-      <span className="text-base text-[#AA0099] uppercase">
+      <span className="text-base md:text-center text-[#AA0099] uppercase">
         Podcasts: SPACES
       </span>
       {audioData.map((audio) => (
         <div
           key={audio._id}
-          className="w-full bg-[#374151] h-auto dark:bg-[#363b43] flex justify-between p-2 mb-3"
+          className="w-full md:w-[76%] md:mx-auto bg-[#374151] h-auto dark:bg-[#363b43] flex justify-between p-2 mb-3"
         >
           <div
             onClick={() => handleExpandClick(audio._id)}
             className="cursor-pointer"
           >
-            <div className="flex p-2 items-center justify-between">
+            <div className="w-full flex p-2 items-center justify-between">
               <span className="uppercase w-[70%] text-xs md:text-sm text-white font-semibold">
                 {audio.title}
               </span>

@@ -21,7 +21,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="G-EZE47FX50E" />
       <CryptoProvider>
         <TrendingProvider>
           <StorageProvider>

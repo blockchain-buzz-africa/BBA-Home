@@ -29,7 +29,7 @@ const Trending = () => {
 
   return (
     <>
-      <Banner />
+    <Banner />
       <Header />
       <main className="w-full flex flex-col first-letter:content-center items-center relative text-white overflow-x-hidden">
         <div className="w-screen -z-10 absolute top-0 bottom-0 right-0 left-0 overflow-x-hidden"></div>

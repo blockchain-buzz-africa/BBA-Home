@@ -181,7 +181,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
 
   return (
     <div className="flex flex-col">
-      <Banner />
+      {/* <Banner /> */}
       <Header />
       <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
       <MarketRow />
