@@ -17,7 +17,7 @@ const TrendingCoin = ({ data }: { data: any }) => {
     last:mb-0 rounded-lg p-4 relative cursor-pointer
     hover:bg-[#e6e7ea] dark:hover:bg-[#383c42] hover:bg-opacity-40 
     "
-      onClick={() => getCoinDetails(data.id)}
+      // onClick={() => getCoinDetails(data.id)}
     >
       {data ? (
         <>

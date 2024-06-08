@@ -1,8 +1,10 @@
+// import { sendGTMEvent } from '@next/third-parties/google'
 import Image from "next/image";
 import React from "react";
 import FancyTwitter from "./../public/fancyTwitter.svg"
 import FancyTelegram from "./../public/fancyTelegram.svg"
 import Link from "next/link";
+import WrapperComponent from "./Wrapper";
 
 type Props = {};
 
@@ -20,11 +22,14 @@ const Footer = (props: Props) => {
 
           <div className="w-full text-xs h-[34px] relative">
             
-          <Link href={"https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u"}>
-            <button className="w-[300] h-[34px] bg-[#163159] text-xs uppercase absolute top-0 left-0 flex justify-center items-center p-2">
-              subscribe
-            </button>
-          </Link>
+          <WrapperComponent eventType="SUBSCRIBED" eventValue="Whatsapp subscribed">
+            <Link href={"https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u"}>
+              <button 
+              className="w-[300] h-[34px] bg-[#163159] text-xs uppercase absolute top-0 left-0 flex justify-center items-center p-2">
+                subscribe
+              </button>
+            </Link>
+          </WrapperComponent>
           </div>
         </div>
         <div className="w-full h-[1px] bg-transparent"></div>
@@ -65,11 +70,14 @@ const Footer = (props: Props) => {
   </p>
 
   <div className="w-[308px] h-[34px] text-xs relative">
-    <Link href={"https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u"}>
-      <button className="w-[300px] h-[34px] bg-[#163159] text-sm uppercase absolute top-0 left-0 flex justify-center items-center p-2">
-        subscribe
-      </button>
-    </Link>
+    <WrapperComponent eventType="sUBSCRIBED" eventValue="Whatsapp subscribed">
+      <Link href={"https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u"}>
+        <button 
+        className="w-[300px] h-[34px] bg-[#163159] text-sm uppercase absolute top-0 left-0 flex justify-center items-center p-2">
+          subscribe
+        </button>
+      </Link>
+    </WrapperComponent>
   </div>
 </div>
         <div className="w-full h-[1px] bg-transparent"></div>
@@ -114,12 +122,18 @@ const Footer = (props: Props) => {
               </p>
               <p>Connect with us on social media</p>
               <div className="flex flex-row gap-4">
-                <Link href={"https://twitter.com/bba_Africa"}>
-                <Image src={FancyTwitter} alt="fancyTwitter" />
-                </Link>
-                <Link href={""}>
-                <Image src={FancyTelegram} alt="fancyTelegram" />
-                </Link>
+                <WrapperComponent  eventType='X Clicked' eventValue='X'>
+                  <Link 
+                  href={"https://twitter.com/bba_Africa"}>
+                  <Image src={FancyTwitter} alt="fancyTwitter" />
+                  </Link>
+                </WrapperComponent>
+                <WrapperComponent  eventType='Telegram Clicked' eventValue='Telegram'>
+                  <Link href={""}
+                  >
+                  <Image src={FancyTelegram} alt="fancyTelegram" />
+                  </Link>
+                </WrapperComponent>
                 
               </div>
             </div>

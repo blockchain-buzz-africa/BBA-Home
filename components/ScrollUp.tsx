@@ -2,6 +2,7 @@
 import Image from "next/image";
 import UpArrow from "./../public/upArrow.svg";
 import React, { useEffect, useState } from "react";
+import WrapperComponent from "./Wrapper";
 
 type Props = {};
 
@@ -47,7 +48,9 @@ const ScrollUp = (props: Props) => {
 
   return (
     <>
+    <WrapperComponent  eventType='Upscroll Clicked' eventValue='scroll up'>
       {showButton && (
+
         <button
           className="fixed bottom-5 right-5 bg-gradient-to-b from-[#AA0099] to-[#21262D] w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all "
           onClick={scrollToTop}
@@ -55,6 +58,7 @@ const ScrollUp = (props: Props) => {
           <Image src={UpArrow} className=" w-4 h-4" alt="uparrow" />
         </button>
       )}
+      </WrapperComponent>
     </>
   );
 };

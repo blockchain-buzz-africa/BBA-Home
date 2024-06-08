@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, lazy, Suspense } from "react";
 import Pagination from "./Pagination";
 import { Credits } from "./Credits";
-import { SaveButton } from "./SaveButton";
 import Link from "next/link";
 import { CryptoContext } from "@/context/CryptoContext";
+
+
+// Lazy load SaveButton component
+const LazySaveButton = lazy(() => import("./SaveButton"));
 
 const TableComponent = () => {
   const { cryptoData, currency, error } = useContext(CryptoContext);
@@ -30,7 +33,7 @@ const TableComponent = () => {
                     "1H",
                     "24H",
                     "7D",
-                  ].map((table: string, index: number) => (
+                  ].map((table, index) => (
                     <th key={index} className="py-1">
                       {table}
                     </th>
@@ -38,14 +41,16 @@ const TableComponent = () => {
                 </tr>
               </thead>
               <tbody>
-                {cryptoData.map((data: any) => (
+                {cryptoData.map((data: { id: React.Key | null | undefined; image: string | undefined; name: any | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.PromiseLikeOfReactNode | null | undefined; symbol: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; current_price: number | number | bigint; total_volume: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; market_cap_change_percentage_24h: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; price_change_percentage_1h_in_currency: number; price_change_percentage_24h_in_currency: number; price_change_percentage_7d_in_currency: number; }) => (
                   <tr
                     key={data.id}
                     className="text-center text-base border-b border-gray-500 text-black dark:text-white hover:bg-[#e6e7ea] dark:hover:bg-[#383c42] last:border-b-0"
                   >
                     <td>
                       <div className="py-4 flex items-center gap-2 uppercase">
-                        <SaveButton data={data} />
+                        <Suspense fallback={<div>Loading...</div>}>
+                          <LazySaveButton data={data} />
+                        </Suspense>
                         <img
                           className="w-[1.2rem] h-[1.2rem] mx-1.5"
                           src={data.image}

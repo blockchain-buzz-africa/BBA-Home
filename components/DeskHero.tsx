@@ -80,8 +80,7 @@ const DeskHero = () => {
           digital canvases, the hunt for talent is on.
           </p>
           <p className="text-xs text-[#6A6A6A] dark:text-[#b2aeae] ">
-            by <span className="text-[#AA0099]">web3 recruiter</span>/ 5 DAYS
-            AGO
+            By <span className="text-[#AA0099]">web3 recruiter</span>/ 
           </p>
         </div>
           <FeaturedDeskArticle latestArticle={anews[0]}  />

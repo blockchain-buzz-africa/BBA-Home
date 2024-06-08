@@ -27,7 +27,7 @@ const MarketRow: React.FC = () => {
 
       const data: Market[] = await response.json();
       console.log(data);
-      setMarkets(data.slice(0, 11));
+      setMarkets(data.slice(0, 10));
     } catch (error) {
       console.error("Error fetching markets:", error);
     }
@@ -49,7 +49,7 @@ const MarketRow: React.FC = () => {
               <span className=" text-[#424242] dark:text-[#A5A5A5]">
                 {item.symbol}
               </span>
-              <span className="italic text-[#BB0000]">
+              <span className="italic text-[#37992a]">
                 {item.current_price}
               </span>
               <span className="px-4">|</span>

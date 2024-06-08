@@ -48,7 +48,7 @@ const AllArticles: React.FC<Props> = ({ fnews }) => {
                 </span>
                 <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
                   <p>{formatDate(item.createdAt)}</p>
-                  <p>Author : {item.author}</p>
+                  <p>By : {item.author}</p>
                 </div>
               </div>
             </Link>

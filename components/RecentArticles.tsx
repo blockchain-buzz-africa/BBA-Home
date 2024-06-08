@@ -42,7 +42,7 @@ const RecentArticles: React.FC<Props> = ({ news }) => {
 
             <div className="w-[70%] h-[70px] flex flex-col gap-1">
               <div className="flex flex-row justify-start gap-4 text-xs">
-                <span className="text-[#AA0099] font-semibold uppercase">News</span>
+                <span className="text-[#AA0099] font-semibold uppercase"></span>
                 <span className="dark:text-[#A5A5A5] text-[#424242]">
                   {item.author}
                 </span>

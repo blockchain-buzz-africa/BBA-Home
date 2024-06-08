@@ -18,7 +18,7 @@ export const SaveButton = ({ data }: any) => {
   return (
     <button
       className="outline-0 border-0 bg-none cursor-pointer"
-      onClick={(e) => handleClick(e)}
+      // onClick={(e) => handleClick(e)}
     >
       <svg
         className={`w-[1.5rem] ml-1.5 
@@ -46,3 +46,5 @@ export const SaveButton = ({ data }: any) => {
     </button>
   );
 };
+
+export default SaveButton

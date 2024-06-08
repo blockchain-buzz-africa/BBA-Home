@@ -171,7 +171,7 @@ const DappPage: React.FC<Props> = ({ searchParams }) => {
                 </p>
                 <div className="mt-2 flex flex-row gap-4 text-xs dark:text-[#A5A5A5] text-[#424242]">
                   <p>{moment(singleDapp.createdAt).format("MMM D, YYYY")}</p>
-                  <p>Author : {singleDapp?.author}</p>
+                  <p>By : {singleDapp?.author}</p>
                 </div>
               </div>
             </motion.div>

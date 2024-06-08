@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { GoogleTagManager } from '@next/third-parties/google'
+ import type { Metadata } from "next";
 import { Tienne } from "next/font/google";
 import "./globals.css";
 import ThemeProvide from "@/context/ThemeProvider";
@@ -20,6 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="G-EZE47FX50E" />
       <CryptoProvider>
         <TrendingProvider>
           <StorageProvider>
