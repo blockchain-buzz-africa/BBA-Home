@@ -21,10 +21,9 @@ sw.addEventListener('install', (event: ExtendableEvent) => {
             .then((cache: Cache) => {
                 return cache.addAll([
                     '/',
-                    '/index.html',
                     '/globals.css',
-                    '/page.tsx',
-                    '/images/buzzIcon.svg'
+                    '/markets',
+                    '/public/buzzIcon.svg'
                 ]);
             })
     );
