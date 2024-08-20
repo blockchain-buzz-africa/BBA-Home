@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ServiceWorkerRegistration() {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -16,25 +18,44 @@ export default function ServiceWorkerRegistration() {
       });
     }
 
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent the mini-infobar from appearing on mobile
+    const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e;
+      setDeferredPrompt(e);
+    };
 
-      // Show the install button if you have one
-      // yourInstallButton.style.display = 'block';
-
-      // Optional: automatically prompt user
-      // deferredPrompt.prompt();
-    });
-
-    window.addEventListener('appinstalled', () => {
+    const handleAppInstalled = () => {
       console.log('PWA installed');
-    });
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
   }, []);
 
-  return null;
+  const handleInstallClick = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice
+        .then((choiceResult: any) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+          } else {
+            console.log('User dismissed the A2HS prompt');
+          }
+          setDeferredPrompt(null); // Clear the deferred prompt
+        });
+    }
+  };
+
+  return (
+    <div>
+      {deferredPrompt && (
+        <button onClick={handleInstallClick}>Install App</button>
+      )}
+    </div>
+  );
 }
