@@ -60,7 +60,7 @@ const PodcastVideos: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const { data: videos, error } = useSWR<Video[]>(
-    "https://api.bbafrica.co/api/videos",
+    "https://api.bbafrica.media/api/videos",
     fetcher
   );
 

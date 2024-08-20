@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getData = async () => {
   try {
-    const response = await axios.get("https://api.bbafrica.co/api/dapps-news");
+    const response = await axios.get("https://api.bbafrica.media/api/dapps-news");
     if (!response.data) {
       throw new Error("Network response was not ok");
     }
@@ -29,7 +29,7 @@ export const getSingleNews = async (_id: string) => {
 
 export const getDapps = async () => {
   try {
-    const response = await axios.get("https://api.bbafrica.co/api/dappstore-info");
+    const response = await axios.get("https://api.bbafrica.media/api/dappstore-info");
     if (!response.data) {
       throw new Error("Network response was not ok");
     }

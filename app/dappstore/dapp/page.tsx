@@ -49,7 +49,7 @@ const DappPage: React.FC<Props> = ({ searchParams }) => {
     const fetchDapps = async () => {
       try {
         const response = await fetch(
-          "https://api.bbafrica.co/api/dappstore-info"
+          "https://api.bbafrica.media/api/dappstore-info"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -110,7 +110,7 @@ const DappPage: React.FC<Props> = ({ searchParams }) => {
   };
 
   const handleShare = async () => {
-    const articleUrl = `https://www.bbafrica.co/dappstore/dapp?_id=${
+    const articleUrl = `https://www.bbafrica.media/dappstore/dapp?_id=${
       singleDapp?._id || ""
     }`;
     const articleTitle = singleDapp?.description || "Check out this article!";
