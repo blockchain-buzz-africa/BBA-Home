@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Banner from "@/components/Banner";
@@ -18,10 +19,11 @@ import moment from "moment";
 import { getData, getSingleNews } from "@/helpers";
 import RecentDeskArticles from "@/components/RecentDeskArticles";
 import Loader from "@/components/Loader";
+import Ads from "@/components/Ads";
 
 interface Article {
   _id: string;
-  image: string; 
+  image: string;
   name: string;
   author: string;
   title: string;
@@ -91,7 +93,6 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           const fetchedNews = await getSingleNews(_idString);
 
           setSingleNews(fetchedNews);
-
         }
       } catch (err) {
         setError("Failed to fetch news");
@@ -103,8 +104,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
     fetchNews();
   }, [_idString, singleNews]);
 
-  useEffect(() => {
-  }, [singleNews]);
+  useEffect(() => {}, [singleNews]);
 
   if (isLoading) {
     return <Loader />;
@@ -272,6 +272,8 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           <CopyConfirmationModal isOpen={isModalOpen} />
           {/* The rest of your component */}
         </div>
+
+        {/* //Share Piece */}
         <div className=" p-3 w-[85%] md:w-[70%]  flex flex-row items-center gap-4 h-[50px] border dark:border-[#A5A5A5] border-[#818181]">
           <span className="text-xs">Share Piece</span>
           <span>|</span>
@@ -295,27 +297,31 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
           </button>
         </div>
 
-        <motion.article
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="py-5 lg:pr-80 
-  dark:text-white text-black mt-10 mb-10 flex flex-col"
-        >
-          <div
-            className="
-            dark:text-white text-black"
-            dangerouslySetInnerHTML={{ __html: singleNews?.content || "" }}
-          />
-        </motion.article>
+        {/* Article column with ads */}
+        <div className="flex flex-col lg:flex-row justify-between">
+          <motion.article
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="py-5 dark:text-white text-black mt-10 mb-10 lg:mr-5 lg:w-3/4"
+          >
+            <div
+              className="dark:text-white text-black"
+              dangerouslySetInnerHTML={{ __html: singleNews?.content || "" }}
+            />
+          </motion.article>
+          <div className="lg:w-1/4">
+            <Ads />
+          </div>
+        </div>
 
         <div className="w-full h-[1px] dark:bg-[#A5A5A5] bg-[#818181]"></div>
 
         <div className="mt-8">
           <p className="font-semibold">
             Dont miss the next big story - join our{" "}
-            <Link className="underline text-slate-600" href={"/"}>
-              free daily newsletter.
+            <Link className="underline text-slate-600" href={"https://whatsapp.com/channel/0029Va6z0Ev4tRrxg8Xj300u"}>
+              free daily newsletter on WhatsApp.
             </Link>{" "}
           </p>
         </div>

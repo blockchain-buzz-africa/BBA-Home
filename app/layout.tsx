@@ -1,5 +1,5 @@
 import { GoogleTagManager } from '@next/third-parties/google'
- import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Tienne } from "next/font/google";
 import "./globals.css";
 import ThemeProvide from "@/context/ThemeProvider";
@@ -14,6 +14,8 @@ const tienne = Tienne({ subsets: ["latin"], weight: "400" });
 export const metadata: Metadata = {
   title: "BBA App",
   description: "Blockchain Buzz Africa App",
+  applicationName: "google-adsense-account", 
+  publisher: "ca-pub-8813409106637988"
 };
 
 export default function RootLayout({
