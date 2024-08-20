@@ -63,7 +63,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("https://api.bbafrica.co/api/dapps-news");
+        const response = await fetch("https://api.bbafrica.media/api/dapps-news");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -115,7 +115,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }
 
   const copyArticleLink = () => {
-    const articleLink = `https://www.bbafrica.co/article?_id=${
+    const articleLink = `https://www.bbafrica.media/article?_id=${
       singleNews?._id || ""
     }`;
     navigator.clipboard.writeText(articleLink).then(
@@ -142,7 +142,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
   }
 
   const handleShare = async () => {
-    const articleUrl = `https://www.bbafrica.co/article?_id=${
+    const articleUrl = `https://www.bbafrica.media/article?_id=${
       singleNews?._id || ""
     }`;
     const articleTitle = singleNews?.title || "Check out this article!";
@@ -282,7 +282,7 @@ const ArticlePage: React.FC<Props> = ({ searchParams }) => {
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               singleNews?.title || ""
             )}&url=${encodeURIComponent(
-              `https://www.bbafrica.co/article?_id=${singleNews?._id || ""}`
+              `https://www.bbafrica.media/article?_id=${singleNews?._id || ""}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"

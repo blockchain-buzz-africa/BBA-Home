@@ -30,7 +30,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch('https://api.bbafrica.co/api/dapps-news');
+        const response = await fetch('https://api.bbafrica.media/api/dapps-news');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

@@ -32,15 +32,15 @@ const Footer = (props: Props) => {
         <div className="w-full h-[249px] text-white flex flex-row sm:p-2 p-7 bg-gradient-to-r from-[#AA0099] to-[#163159] ">
           <div className="w-1/2 h-full flex flex-col gap-2">
             <span className="uppercase font-semibold text-xs">Sections</span>
-            <Link href={"https://www.bbafrica.co/"}>
+            <Link href={"https://www.bbafrica.media/"}>
               <span className="uppercase  text-sm">Media</span>
               </Link>
-            <Link href={"https://www.bbafrica.co/markets"}>
+            <Link href={"https://www.bbafrica.media/markets"}>
               <span className="uppercase  text-sm">Markets</span>
             </Link>
             {/* <span className="uppercase  text-sm">Podcasts</span>
             <span className="uppercase  text-sm">Learn</span> */}
-            <Link href={"https://www.bbafrica.co/dappstore"}>
+            <Link href={"https://www.bbafrica.media/dappstore"}>
               <span className="uppercase  text-sm">DAPP STORE</span>
             </Link>
           </div>
@@ -78,14 +78,14 @@ const Footer = (props: Props) => {
          <div className="w-[40%] flex text-xs flex-row">
             <div className="w-1/2 h-full flex flex-col gap-4">
               <span className="uppercase font-semibold">Sections</span>
-              <Link href={"https://www.bbafrica.co/"}>
+              <Link href={"https://www.bbafrica.media/"}>
               <span className="uppercase  text-sm">Media</span>
               </Link>
-              <Link href={"https://www.bbafrica.co/markets"}>
+              <Link href={"https://www.bbafrica.media/markets"}>
               <span className="uppercase  text-sm">Markets</span>
               </Link>
               {/* <span className="uppercase  text-sm">Learn</span> */}
-              <Link href={"https://www.bbafrica.co/dappstore"}>
+              <Link href={"https://www.bbafrica.media/dappstore"}>
               <span className="uppercase  text-sm">DAPP STORE</span>
               </Link>
             </div>

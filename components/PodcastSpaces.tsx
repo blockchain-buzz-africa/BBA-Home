@@ -126,7 +126,7 @@ const PodcastSpaces: React.FC = () => {
     const fetchAudioData = async () => {
       try {
         const response = await axios.get<{ data: AudioData[] }>(
-          "https://api.bbafrica.co/api/audios"
+          "https://api.bbafrica.media/api/audios"
         );
         setAudioData(response.data.data);
         setLoading(false);
