@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import AdImage from "./../public/adImage.jpeg";
+import AdImage from "./../public/adImage.webp";
 import { motion } from "framer-motion";
 import Homee from "./../public/home.png";
 import FeaturedImage from "./../public/featuredImg.jpeg";
@@ -9,7 +9,6 @@ import Link from "next/link";
 import RecentDeskArticles from "./RecentDeskArticles";
 import AllArticles from "./AllArticles";
 import FeaturedDeskArticle from "./FeaturedDeskArticle";
-
 
 interface Article {
   _id: string;
@@ -21,19 +20,18 @@ interface Article {
   createdAt: string; // Assuming this is also required
 }
 
-
 const DeskHero = () => {
-
   const [anews, setAnews] = useState<Article[]>([]);
   const [fnews, setfnews] = useState<Article[]>([]);
-
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch('https://api.bbafrica.media/api/dapps-news');
+        const response = await fetch(
+          "https://api.bbafrica.media/api/dapps-news"
+        );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const newsData = await response.json();
         const sortedNews = newsData.data.sort((a: Article, b: Article) => {
@@ -42,12 +40,11 @@ const DeskHero = () => {
           return dateB.getTime() - dateA.getTime();
         });
         console.log(sortedNews);
-        
-        setfnews(sortedNews)
+
+        setfnews(sortedNews);
         setAnews(sortedNews.slice(0, 5));
-        
       } catch (error) {
-        console.error('Error fetching news:', error);
+        console.error("Error fetching news:", error);
       }
     };
 
@@ -62,30 +59,32 @@ const DeskHero = () => {
     <>
       <motion.div
         initial="hidden"
-        animate="visible" 
+        animate="visible"
         variants={containerVariants}
         className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 "
       >
-        <div className=" w-[20%] hidden lg:flex flex-col gap-1">
-          <span className=" text-xs">Ad</span>
-          <Image src={AdImage} alt="image" className=" w-[290px] h-[170px]" />
-          <span className=" text-xl mt-2">
-            Will the bull run spur jobs in the web3 market?
-          </span>
-          <p className="text-sm text-[#6A6A6A] dark:text-[#b2aeae] ">
-          The web3 job market is poised to become a fertile hunting ground, 
-          where pioneers and visionaries will stake their claim in shaping 
-          the decentralized future. From blockchain developers crafting the 
-          backbone of this new frontier to NFT artists breathing life into 
-          digital canvases, the hunt for talent is on.
-          </p>
-          <p className="text-xs text-[#6A6A6A] dark:text-[#b2aeae] ">
-            by <span className="text-[#AA0099]">web3 recruiter</span>/ 5 DAYS
-            AGO
-          </p>
-        </div>
-          <FeaturedDeskArticle latestArticle={anews[0]}  />
-         <RecentDeskArticles anews={anews} />
+        <Link href="https://app.swypt.io/">
+          <div className=" w-[20%] hidden lg:flex flex-col gap-1">
+            <span className=" text-xs">Ad</span>
+            <Image src={AdImage} alt="image" className=" w-[290px] h-[170px]" />
+            <span className=" text-xl mt-2">
+              Swypt: Seamlessly Connect Crypto and Mobile Money
+            </span>
+            <p className="text-sm text-[#6A6A6A] dark:text-[#b2aeae] ">
+              Swypt is a dapp that allows you to easily buy and sell
+              cryptocurrencies using your mobile money account. Deposit fiat,
+              purchase digital assets, and convert them back to local currency
+              for instant withdrawals. Pay for goods/utilities directly with digital assets.
+              With lightning-fast transactions, low Fees, and a user-friendly interface, 
+              Swypt makes crypto-to-fiat transactions simple and accessible. 
+            </p>
+            <p className="text-xs text-[#6A6A6A] dark:text-[#b2aeae] ">
+              from <Link href="https://app.swypt.io/"><span className="text-[#AA0099]">SWYPT</span> </Link>
+            </p>
+          </div>
+        </Link>
+        <FeaturedDeskArticle latestArticle={anews[0]} />
+        <RecentDeskArticles anews={anews} />
       </motion.div>
 
       <AllArticles fnews={fnews} />
