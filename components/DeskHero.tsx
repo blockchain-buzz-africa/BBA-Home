@@ -9,6 +9,7 @@ import Link from "next/link";
 import RecentDeskArticles from "./RecentDeskArticles";
 import AllArticles from "./AllArticles";
 import FeaturedDeskArticle from "./FeaturedDeskArticle";
+import dynamic from 'next/dynamic';
 
 interface Article {
   _id: string;
@@ -23,8 +24,10 @@ interface Article {
 const DeskHero = () => {
   const [anews, setAnews] = useState<Article[]>([]);
   const [fnews, setfnews] = useState<Article[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const fetchNews = async () => {
       try {
         const response = await fetch(
@@ -55,17 +58,23 @@ const DeskHero = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
+
   return (
     <>
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-4 "
+        className="w-full mb-10 hidden h-[692px] py-10 px-5 md:flex flex-row gap-2 "
       >
-        <Link href="https://app.swypt.io/">
+        
           <div className=" w-[20%] hidden lg:flex flex-col gap-1">
-            <span className=" text-xs">Ad</span>
+            <Link href="https://app.swypt.io/">
+            <span className=" text-xs">Spotlight</span>
             <Image src={AdImage} alt="image" className=" w-[290px] h-[170px]" />
             <span className=" text-xl mt-2">
               Swypt: Seamlessly Connect Crypto and Mobile Money
@@ -81,8 +90,9 @@ const DeskHero = () => {
             <p className="text-xs text-[#6A6A6A] dark:text-[#b2aeae] ">
               from <Link href="https://app.swypt.io/"><span className="text-[#AA0099]">SWYPT</span> </Link>
             </p>
+            </Link>
           </div>
-        </Link>
+        
         <FeaturedDeskArticle latestArticle={anews[0]} />
         <RecentDeskArticles anews={anews} />
       </motion.div>
@@ -191,4 +201,4 @@ const DeskHero = () => {
   );
 };
 
-export default DeskHero;
+export default dynamic(() => Promise.resolve(DeskHero), { ssr: false });
