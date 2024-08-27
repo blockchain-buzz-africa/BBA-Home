@@ -7,7 +7,7 @@ type Props = {};
 
 const Banner: React.FC<Props> = (props) => {
   const calculateTimeLeft = () => {
-    const difference = +new Date('08/24/2024') - +new Date();
+    const difference = +new Date('09/08/2024') - +new Date();
     let timeLeft = {
       days: 0,
       hours: 0,
@@ -41,17 +41,17 @@ const Banner: React.FC<Props> = (props) => {
 
   return (
     <>
-    <Link href={'https://lu.ma/user/usr-GbkydeKlcI8G4Cj'}>
+    <Link href={'https://ethsafari.xyz/'}>
 
     <div className="w-full md:hidden flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white text-xs">
-        NFT AFRIKA 24: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} <br /> minutes {timeLeft.seconds} seconds remaining
+        ETHSAFARI 24: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} <br /> minutes {timeLeft.seconds} seconds remaining
       </p>
     </div>
 
     <div className="w-full hidden md:flex justify-center items-center h-[46px] bg-gradient-to-r from-[#AA0099] to-[#21262D]">
       <p className="text-white">
-      NFT AFRIKA 24: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
+      ETHSAFARI 24: {timeLeft.days} days {timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds remaining
       </p>
     </div>
 
